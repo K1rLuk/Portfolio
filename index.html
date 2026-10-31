@@ -10,7 +10,7 @@
   · Telegram:  t.me/KirillLukianenko
   · WhatsApp:  wa.me/79097077817
   · Почта:     kir.lukianenko@gmail.com
-  · Цены:      6 999 / 14 999 / 29 999  (и опции калькулятора: блок CALC в JS)
+  · Цены:      6 900 / 13 900 / 27 900  (и опции калькулятора: блок CALC в JS)
   · Темы:      по умолчанию тема устройства (если не определена — светлая),
                переключатель в шапке, выбор запоминается
   · Работы:    папка works/ рядом (garazh12.html, polka.html, dvorik.html)
@@ -18,18 +18,21 @@
   появлении блоков, блики на рамках. Тяжёлого нет: iframe и анимированных
   орбов не используем, свечения нарисованы градиентами.
 -->
-<title>Сайты под ключ от 6 999 ₽ — Кирилл Лукьяненко | Оренбург, вся Россия</title>
-<meta name="description" content="Разработка сайтов по техническому заданию: лендинги, корпоративные сайты, интернет-магазины. Оренбург и удалённо по всей России. Цена и срок фиксируются до старта, правки бесплатные. От 6 999 ₽.">
+<title>Сайты под ключ от 6 900 ₽ — Кирилл Лукьяненко | Оренбург, вся Россия</title>
+<meta name="description" content="Разработка сайтов по техническому заданию: лендинги, корпоративные сайты, интернет-магазины. Оренбург и удалённо по всей России. Цена и срок фиксируются до старта, правки бесплатные. От 6 900 ₽.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://k1rluk.github.io/Portfolio/">
+<link rel="alternate" hreflang="ru" href="https://k1rluk.github.io/Portfolio/">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:url" content="https://k1rluk.github.io/Portfolio/">
 <meta property="og:site_name" content="Кирилл Лукьяненко — разработка сайтов">
-<meta property="og:title" content="Сайты под ключ от 6 999 ₽ — цена и срок фиксируются до старта">
+<meta property="og:title" content="Сайты под ключ от 6 900 ₽ — цена и срок фиксируются до старта">
 <meta property="og:description" content="Лендинги, корпоративные сайты и магазины. Правки бесплатно, исходники и домен — ваши. Первый разбор задачи ни к чему не обязывает.">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://k1rluk.github.io/Portfolio/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://k1rluk.github.io/Portfolio/og-image.png">
 <meta name="theme-color" id="metaTheme" content="#ffffff">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%230a0a0a'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' fill='%23fff' text-anchor='middle'%3EК%3C/text%3E%3C/svg%3E">
@@ -301,9 +304,17 @@ h1 em::after{
 .srv-time{font-size:13px;color:var(--mut2)}
 
 /* ==========================================================
-   РАБОТЫ: окна браузера с мини-макетом (без iframe)
+   РАБОТЫ: окна браузера с мини-макетом + живые демо (works/)
    ========================================================== */
 .works{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--acc-strong);background:var(--acc-soft);border:1px solid var(--acc-soft);border-radius:100px;padding:4px 12px}
+.kicker{display:block;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--acc-strong);margin-bottom:16px}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;margin-bottom:26px;padding:8px 16px;border-radius:100px;
+  border:1px solid var(--glass-brd);background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  font-size:13px;font-weight:600;color:var(--mut)}
+.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 4px var(--acc-soft);animation:pulse 2.6s ease infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 3px var(--acc-soft)}50%{box-shadow:0 0 0 8px transparent}}
 .works > *{min-width:0}
 .work{display:flex;flex-direction:column;gap:16px;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
 .work:hover{transform:translateY(-7px)}
@@ -352,6 +363,11 @@ h1 em::after{
 .work-meta b{font-family:var(--f-h);font-weight:500;font-size:15.5px;letter-spacing:-.015em;display:block}
 .work-meta span{display:block;color:var(--mut);font-size:13.5px;line-height:1.45;margin-top:7px}
 .work-meta em{display:block;font-style:normal;color:var(--mut2);font-size:12.5px;margin-top:9px;transition:color .25s}
+.work-tag{position:absolute;top:12px;right:12px;z-index:3;display:inline-flex;align-items:center;gap:6px;
+  font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;
+  background:rgba(10,10,11,.55);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border-radius:100px;padding:5px 11px;transition:background .25s,border-color .25s}
+.work:hover .work-tag{background:var(--acc-strong);border-color:var(--acc-strong);color:var(--on)}
 .work:hover .work-meta em{color:var(--ink)}
 .works-note{margin-top:34px;color:var(--mut2);font-size:14px;max-width:64ch;line-height:1.6}
 .works-note b{color:var(--mut);font-weight:600}
@@ -627,6 +643,9 @@ body.menu-open .mobile-menu > :nth-child(8){transition-delay:.37s}
   .burger{display:block}
   .hero{padding-top:140px}
   .hero-grid{grid-template-columns:1fr;gap:44px}
+  /* на планшетах h1 крупнее, чем ширина колонки — снимаем принудительную перенонепрерывность */
+  h1 em{white-space:normal}
+  h1 em::after{left:-1%;right:-1%}
   .path,.srv{grid-template-columns:1fr;gap:14px}
   .compare{grid-template-columns:1fr;gap:14px}
   .cmp-me{order:-1}
@@ -686,14 +705,15 @@ body.menu-open .mobile-menu > :nth-child(8){transition-delay:.37s}
       "name": "Кирилл Лукьяненко — разработка сайтов",
       "description": "Фриланс-разработчик из Оренбурга: лендинги, корпоративные сайты, интернет-магазины по техническому заданию. Цена и срок фиксируются до старта, правки бесплатные.",
       "telephone": "+7 909 707-78-17",
-      "priceRange": "от 6999 RUR",
+      "email": "kir.lukianenko@gmail.com",
+      "priceRange": "от 6900 RUR",
       "areaServed": "RU",
       "address": { "@type": "PostalAddress", "addressLocality": "Оренбург", "addressCountry": "RU" },
       "sameAs": [ "https://t.me/KirillLukianenko", "https://wa.me/79097077817" ],
       "makesOffer": [
-        { "@type": "Offer", "name": "Лендинг под ключ", "price": "6999", "priceCurrency": "RUR", "description": "Одностраничный сайт по ТЗ: структура, адаптив, формы заявок, публикация на домене." },
-        { "@type": "Offer", "name": "Корпоративный сайт", "price": "14999", "priceCurrency": "RUR", "description": "Многостраничный сайт компании с админкой: услуги, портфолио, контакты, SEO-подготовка." },
-        { "@type": "Offer", "name": "Интернет-магазин", "price": "29999", "priceCurrency": "RUR", "description": "Каталог, корзина, приём платежей, админка товаров и заказов, интеграции по ТЗ." }
+        { "@type": "Offer", "name": "Лендинг под ключ", "price": "6900", "priceCurrency": "RUR", "description": "Одностраничный сайт по ТЗ: структура, адаптив, формы заявок, публикация на домене." },
+        { "@type": "Offer", "name": "Корпоративный сайт", "price": "13900", "priceCurrency": "RUR", "description": "Многостраничный сайт компании с админкой: услуги, портфолио, контакты, SEO-подготовка." },
+        { "@type": "Offer", "name": "Интернет-магазин", "price": "27900", "priceCurrency": "RUR", "description": "Каталог, корзина, приём платежей, админка товаров и заказов, интеграции по ТЗ." }
       ]
     },
     {
@@ -718,7 +738,7 @@ body.menu-open .mobile-menu > :nth-child(8){transition-delay:.37s}
 <noscript>
   <p style="max-width:700px;margin:0 auto;padding:20px 24px;font:15px/1.6 sans-serif">
     Кирилл Лукьяненко — разработчик сайтов из Оренбурга: лендинги, корпоративные сайты и интернет-магазины
-    по техническому заданию, от 6 999 ₽, правки бесплатно, удалённо по всей России.
+    по техническому заданию, от 6 900 ₽, правки бесплатно, удалённо по всей России.
     Связь: Telegram @KirillLukianenko, WhatsApp и телефон +7 909 707-78-17.
   </p>
 </noscript>
@@ -757,6 +777,7 @@ body.menu-open .mobile-menu > :nth-child(8){transition-delay:.37s}
   <div class="m-actions">
     <a class="btn btn-solid" href="https://t.me/KirillLukianenko" target="_blank" rel="noopener">Написать в Telegram</a>
     <a class="btn btn-ghost" href="https://wa.me/79097077817" target="_blank" rel="noopener">Написать в WhatsApp</a>
+    <a class="btn btn-ghost" href="mailto:kir.lukianenko@gmail.com">Почта: kir.lukianenko@gmail.com</a>
   </div>
 </div>
 
@@ -770,6 +791,7 @@ body.menu-open .mobile-menu > :nth-child(8){transition-delay:.37s}
   <div class="wrap">
     <div class="hero-grid">
       <div>
+        <span class="hero-badge rv"><span class="dot"></span><span id="slotBadge">Ближайший свободный старт — через несколько дней</span></span>
         <h1 class="rv">Сайт, который <em>приводит клиентов</em>, а не просто существует</h1>
         <p class="hero-sub rv rv-d1">
           Я Кирилл, разработчик из Оренбурга, в деле больше трёх лет.
@@ -868,7 +890,7 @@ body.menu-open .mobile-menu > :nth-child(8){transition-delay:.37s}
           <li>адаптив под телефон, планшет, компьютер</li>
           <li>формы заявок в Telegram или на почту</li>
         </ul>
-        <div class="srv-foot"><span class="srv-price">от 6 999 ₽</span><span class="srv-time">5–10 дней</span></div>
+        <div class="srv-foot"><span class="srv-price">от 6 900 ₽</span><span class="srv-time">5–10 дней</span></div>
       </article>
       <article class="glass srv-card rv rv-d1">
         <span class="srv-n">02</span>
@@ -879,7 +901,7 @@ body.menu-open .mobile-menu > :nth-child(8){transition-delay:.37s}
           <li>базовая SEO-подготовка и скорость</li>
           <li>карты, формы, интеграции по ТЗ</li>
         </ul>
-        <div class="srv-foot"><span class="srv-price">от 14 999 ₽</span><span class="srv-time">2–4 недели</span></div>
+        <div class="srv-foot"><span class="srv-price">от 13 900 ₽</span><span class="srv-time">2–4 недели</span></div>
       </article>
       <article class="glass srv-card rv rv-d2">
         <span class="srv-n">03</span>
@@ -890,7 +912,7 @@ body.menu-open .mobile-menu > :nth-child(8){transition-delay:.37s}
           <li>перенос на новый дизайн без потери позиций</li>
           <li>ускорение и исправление вёрстки</li>
         </ul>
-        <div class="srv-foot"><span class="srv-price">от 29 999 ₽</span><span class="srv-time">срок по ТЗ</span></div>
+        <div class="srv-foot"><span class="srv-price">от 27 900 ₽</span><span class="srv-time">срок по ТЗ</span></div>
       </article>
     </div>
   </div>
@@ -913,7 +935,7 @@ body.menu-open .mobile-menu > :nth-child(8){transition-delay:.37s}
         <span class="work-meta">
           <b>Автосервис «Гараж 12»</b>
           <span>тёмный индастриал, сигнальный жёлтый: прайс, записи, отзывы, гарантии</span>
-          <em>открыть живое демо ↗</em>
+          <em>открыть демо целиком ↗</em>
         </span>
       </a>
 
@@ -925,7 +947,7 @@ body.menu-open .mobile-menu > :nth-child(8){transition-delay:.37s}
         <span class="work-meta">
           <b>Барбершоп «Полка»</b>
           <span>уголь и латунь, антиква: прайс-лист, мастера, сертификаты, запись</span>
-          <em>открыть живое демо ↗</em>
+          <em>открыть демо целиком ↗</em>
         </span>
       </a>
 
@@ -937,14 +959,15 @@ body.menu-open .mobile-menu > :nth-child(8){transition-delay:.37s}
         <span class="work-meta">
           <b>Ландшафтная мастерская «Дворик»</b>
           <span>светлый минимализм, шалфей: портфолио, этапы, отзывы, заявка</span>
-          <em>открыть живое демо ↗</em>
+          <em>открыть демо целиком ↗</em>
         </span>
       </a>
     </div>
 
     <p class="works-note rv">
-      <b>Честно о демо:</b> компании и тексты внутри выдуманные, механика настоящая —
-      вёрстка, адаптив, формы, анимации. Ваши проекты будут такими же собранными, только про ваш бизнес.
+      <b>Честно о демо:</b> три сайта выше — настоящие страницы, которые я сверстал для портфолио:
+      откройте любую и покрутите с телефона и с компьютера. Компании и цены внутри выдуманные,
+      механика настоящая: вёрстка, адаптив, анимации, формы. Ваш проект будет таким же собранным, только про ваш бизнес.
     </p>
   </div>
 </section>
@@ -1017,8 +1040,8 @@ body.menu-open .mobile-menu > :nth-child(8){transition-delay:.37s}
         <p class="price-desc">Одна страница под услугу, продукт или событие.</p>
         <div class="price-sum">
           <span class="from">стоимость</span>
-          <span class="val">от 6 999<sup>₽</sup></span>
-          <span class="price-per">≈ 19 ₽ в день за первый год работы сайта</span>
+          <span class="val">от 6 900<sup>₽</sup></span>
+          <span class="price-per">≈ 38 ₽ в день — если считать первый год жизни сайта</span>
         </div>
         <ul>
           <li><svg viewBox="0 0 24 24"><path d="m4 12.5 5 5L20 6.5"/></svg>до 8 смысловых блоков</li>
@@ -1036,8 +1059,8 @@ body.menu-open .mobile-menu > :nth-child(8){transition-delay:.37s}
         <p class="price-desc">Несколько страниц, админка, всё под ключ.</p>
         <div class="price-sum">
           <span class="from">стоимость</span>
-          <span class="val">от 14 999<sup>₽</sup></span>
-          <span class="price-per">≈ 41 ₽ в день за первый год работы сайта</span>
+          <span class="val">от 13 900<sup>₽</sup></span>
+          <span class="price-per">≈ 76 ₽ в день — если считать первый год жизни сайта</span>
         </div>
         <ul>
           <li><svg viewBox="0 0 24 24"><path d="m4 12.5 5 5L20 6.5"/></svg>до 10 страниц</li>
@@ -1054,8 +1077,8 @@ body.menu-open .mobile-menu > :nth-child(8){transition-delay:.37s}
         <p class="price-desc">Каталог, корзина, оплата, личный кабинет.</p>
         <div class="price-sum">
           <span class="from">стоимость</span>
-          <span class="val">от 29 999<sup>₽</sup></span>
-          <span class="price-per">≈ 82 ₽ в день за первый год работы сайта</span>
+          <span class="val">от 27 900<sup>₽</sup></span>
+          <span class="price-per">≈ 152 ₽ в день — если считать первый год жизни сайта</span>
         </div>
         <ul>
           <li><svg viewBox="0 0 24 24"><path d="m4 12.5 5 5L20 6.5"/></svg>каталог с фильтрами и поиском</li>
@@ -1084,16 +1107,16 @@ body.menu-open .mobile-menu > :nth-child(8){transition-delay:.37s}
     <!-- калькулятор: клиент сам собирает ориентир и отправляет его одним тапом -->
     <div class="glass calc rv" id="calc">
       <h3>Калькулятор ориентира сметы</h3>
-      <p class="calc-lead">Три клика — и вы видите вилку до разговора со мной.
-        Результат можно отправить в WhatsApp одним тапом: приду на диалог уже с пониманием задачи.</p>
+      <p class="calc-lead">Три клика — и вы видите ориентир до разговора со мной.
+        Результат можно отправить в Telegram или WhatsApp одним тапом: приду на диалог уже с пониманием задачи.</p>
 
       <div class="calc-groups">
         <fieldset>
           <legend>Тип сайта</legend>
           <div class="pills" id="calcType">
-            <label class="pill"><input type="radio" name="ctype" value="l" checked><span>Лендинг <small>от 6 999 ₽</small></span></label>
-            <label class="pill"><input type="radio" name="ctype" value="c"><span>Корпоративный <small>от 14 999 ₽</small></span></label>
-            <label class="pill"><input type="radio" name="ctype" value="s"><span>Магазин <small>от 29 999 ₽</small></span></label>
+            <label class="pill"><input type="radio" name="ctype" value="l" checked><span>Лендинг <small>от 6 900 ₽</small></span></label>
+            <label class="pill"><input type="radio" name="ctype" value="c"><span>Корпоративный <small>от 13 900 ₽</small></span></label>
+            <label class="pill"><input type="radio" name="ctype" value="s"><span>Магазин <small>от 27 900 ₽</small></span></label>
           </div>
         </fieldset>
         <fieldset>
@@ -1110,12 +1133,12 @@ body.menu-open .mobile-menu > :nth-child(8){transition-delay:.37s}
       <div class="calc-out">
         <div class="calc-sum">
           <span class="k">Ваш ориентир</span>
-          <span class="v" id="calcSum" aria-live="polite">от 6 999<sup>₽</sup></span>
+          <span class="v" id="calcSum" aria-live="polite">от 6 900 до 9 700<sup>₽</sup></span>
           <span class="calc-note">Точную смету пришлю после разбора ТЗ — и она не изменится по ходу работы.</span>
         </div>
         <div class="calc-btns">
           <a class="btn btn-solid" id="calcWa" href="https://wa.me/79097077817" target="_blank" rel="noopener">Отправить расчёт в WhatsApp</a>
-          <a class="btn btn-ghost" href="https://t.me/KirillLukianenko" target="_blank" rel="noopener">Обсудить в Telegram</a>
+          <a class="btn btn-ghost" id="calcTg" href="https://t.me/KirillLukianenko" target="_blank" rel="noopener">Обсудить в Telegram</a>
         </div>
       </div>
     </div>
@@ -1157,7 +1180,7 @@ body.menu-open .mobile-menu > :nth-child(8){transition-delay:.37s}
           <li class="plus">смета, превью и сроки — письменно до старта</li>
           <li class="plus">правки бесплатно до результата, который устраивает</li>
           <li class="plus">домен, код и доступы — ваши с первого дня</li>
-          <li class="plus">стоимость от 6 999 ₽ без наценки за офис</li>
+          <li class="plus">стоимость от 6 900 ₽ без наценки за офис</li>
         </ul>
       </div>
     </div>
@@ -1264,7 +1287,7 @@ body.menu-open .mobile-menu > :nth-child(8){transition-delay:.37s}
       <h2>Расскажите о задаче — отвечу ценой и сроком</h2>
       <p class="lead">Хватит пары предложений о том, что вам нужно. Первый разбор задачи бесплатный и ни к чему не обязывает.</p>
 
-      <span class="scarcity">Беру немного проектов одновременно — чтобы не срывать сроки. На этой неделе есть место.</span>
+      <span class="scarcity" id="scarcity">Беру немного проектов одновременно — чтобы не срывать сроки. Актуальную загрузку смотрите в начале страницы.</span>
 
       <div class="channels">
         <a class="channel" href="https://t.me/KirillLukianenko" target="_blank" rel="noopener">
@@ -1282,6 +1305,11 @@ body.menu-open .mobile-menu > :nth-child(8){transition-delay:.37s}
           <span class="ch-txt"><span class="k">Позвонить</span><span class="v">+7 909 707-78-17</span></span>
           <svg class="ch-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
         </a>
+        <a class="channel" href="mailto:kir.lukianenko@gmail.com?subject=%D0%97%D0%B0%D1%8F%D0%B2%D0%BA%D0%B0%20%D0%BD%D0%B0%20%D1%81%D0%B0%D0%B9%D1%82">
+          <span class="ch-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></span>
+          <span class="ch-txt"><span class="k">Почта — для писем с файлами и ТЗ</span><span class="v">kir.lukianenko@gmail.com</span></span>
+          <svg class="ch-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
       </div>
 
       <span class="contact-hand">отвечаю в течение часа, обычно быстрее</span>
@@ -1294,7 +1322,7 @@ body.menu-open .mobile-menu > :nth-child(8){transition-delay:.37s}
 
 <footer class="footer">
   <div class="wrap footer-in">
-    <span>© <span id="year">2026</span> Кирилл Лукьяненко</span>
+    <span>© <span id="year">2026</span> Кирилл Лукьяненко · работаю как самозанятый, чек выдаю</span>
     <nav>
       <a href="#services">Услуги</a>
       <a href="#works">Работы</a>
@@ -1317,6 +1345,26 @@ body.menu-open .mobile-menu > :nth-child(8){transition-delay:.37s}
 
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
+
+/* SL: актуальная загрузка. Менять только NEXT_START (дата ближайшего свободного старта).
+   Всё остальное считается само — цифры на странице всегда согласованы. */
+(function(){
+  var NEXT_START = '2026-11-10'; // ← править вручную раз в неделю
+  var MONTHS = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+  var d = new Date(NEXT_START + 'T00:00:00');
+  var today = new Date(); today.setHours(0,0,0,0);
+  var days = Math.round((d - today) / 86400000);
+  var when;
+  if (days < 0) when = 'старт возможен со следующего дня после обсуждения';
+  else if (days === 0) when = 'могу стартовать завтра';
+  else if (days === 1) when = 'ближайший старт — через день';
+  else if (days <= 7) when = 'ближайший старт — ' + d.getDate() + ' ' + MONTHS[d.getMonth()] + ' (' + days + ' дн.)';
+  else when = 'ближайший свободный старт — ' + d.getDate() + ' ' + MONTHS[d.getMonth()];
+  var badge = document.getElementById('slotBadge');
+  if (badge) badge.textContent = when + ' · Оренбург → вся Россия';
+  var sc = document.getElementById('scarcity');
+  if (sc) sc.textContent = 'Беру немного проектов одновременно — чтобы не срывать сроки. ' + when.charAt(0).toUpperCase() + when.slice(1) + '.';
+})();
 
 /* тема + цвет адресной строки */
 (function(){
@@ -1406,12 +1454,13 @@ document.querySelectorAll('#mobileMenu a').forEach(function(a){
 
 /* CALC: калькулятор ориентира сметы */
 (function(){
-  var BASE = { l:6999, c:14999, s:29999 };
+  var BASE = { l:6900, c:13900, s:27900 };
   var NAMES = { l:'лендинг', c:'корпоративный сайт', s:'интернет-магазин' };
   var form = document.getElementById('calc');
   if (!form) return;
   var out = document.getElementById('calcSum');
   var wa = document.getElementById('calcWa');
+  var tg = document.getElementById('calcTg');
   var fmt = function(n){ return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,' '); };
   var recalc = function(){
     var type = form.querySelector('input[name="ctype"]:checked').value;
@@ -1420,11 +1469,14 @@ document.querySelectorAll('#mobileMenu a').forEach(function(a){
     form.querySelectorAll('#calcOpts input:checked').forEach(function(i){
       sum += +i.value; opts.push(i.dataset.name);
     });
-    out.innerHTML = 'от ' + fmt(sum) + '<sup>₽</sup>';
+    var hi = Math.round(sum * 1.4 / 100) * 100; // честный коридор: до сложной реализации
+    out.innerHTML = 'от ' + fmt(sum) + ' до ' + fmt(hi) + '<sup>₽</sup>';
     var msg = 'Здравствуйте! Собрал ориентир на вашем сайте: ' + NAMES[type] +
               (opts.length ? ' + ' + opts.join(', ') : '') +
-              '. Калькулятор показал от ' + fmt(sum) + ' ₽. Обсудим детали?';
-    wa.href = 'https://wa.me/79097077817?text=' + encodeURIComponent(msg);
+              '. Калькулятор показал ' + fmt(sum) + '\u2013' + fmt(hi) + ' \u20BD. Обсудим детали?';
+    var enc = encodeURIComponent(msg);
+    wa.href = 'https://wa.me/79097077817?text=' + enc;
+    if (tg) tg.href = 'https://t.me/KirillLukianenko?text=' + enc;
   };
   form.addEventListener('change', recalc);
   recalc();
