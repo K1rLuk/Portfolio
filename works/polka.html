@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Барбершоп «Полка» — живое демо сайта | Кирилл Лукьяненко</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2316120e'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='34' fill='%23c8a26a' text-anchor='middle'%3EП%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#16120e; --bg2:#1e1913; --ink:#f0e4d0; --mut:rgba(240,228,208,.62); --mut2:rgba(240,228,208,.36);
+  --line:rgba(240,228,208,.14); --acc:#c8a26a;
+  --f-h:"Playfair Display",Georgia,serif; --f-b:"Manrope",system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 var(--f-b);-webkit-font-smoothing:antialiased;overflow-x:clip}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{margin:0;font-family:var(--f-h);font-weight:600;line-height:1.15}
+p{margin:0}
+.wrap{max-width:1020px;margin:0 auto;padding:0 20px}
+.demo-bar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;
+  padding:9px 16px;background:#0d0a07;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--mut2)}
+.demo-bar b{color:var(--acc);font-weight:600}
+.demo-bar a{color:var(--ink);border-bottom:1px dashed var(--mut2)}
+.demo-bar a:hover{color:var(--acc);border-color:var(--acc)}
+.hdr{position:sticky;top:37px;z-index:40;background:rgba(22,18,14,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:70px}
+.logo{font-family:var(--f-h);font-size:22px;font-weight:700;letter-spacing:.06em;display:flex;align-items:center;gap:10px}
+.logo em{font-style:normal;color:var(--acc)}
+.hdr nav{display:flex;gap:24px;font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.hdr nav a{transition:color .2s}.hdr nav a:hover{color:var(--acc)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:2px;padding:15px 30px;font-weight:700;font-size:12.5px;
+  text-transform:uppercase;letter-spacing:.16em;font-family:var(--f-b);transition:transform .2s,box-shadow .2s,background .2s,color .2s,border-color .2s}
+.btn-acc{background:var(--acc);color:#171208}
+.btn-acc:hover{transform:translateY(-2px);box-shadow:0 16px 38px -16px rgba(200,162,106,.5)}
+.btn-out{border:1px solid var(--line);color:var(--ink)}
+.btn-out:hover{border-color:var(--acc);color:var(--acc)}
+.hero{padding:90px 0 80px;text-align:center;position:relative;
+  background:radial-gradient(640px 400px at 50% -10%,rgba(200,162,106,.14),transparent 65%)}
+.hero .kicker{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--acc);font-weight:700}
+.hero h1{font-size:clamp(34px,6.4vw,66px);margin-top:20px;max-width:18ch;margin-left:auto;margin-right:auto}
+.hero h1 i{color:var(--acc)}
+.hero p{color:var(--mut);margin:20px auto 0;max-width:48ch;font-size:17px}
+.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.rule{display:flex;align-items:center;gap:18px;justify-content:center;margin-top:46px;color:var(--mut2);font-size:12.5px;letter-spacing:.18em;text-transform:uppercase}
+.rule::before,.rule::after{content:"";height:1px;width:min(120px,20vw);background:var(--line)}
+section{padding:80px 0}
+.sec-t{font-size:clamp(26px,4.4vw,42px);text-align:center}
+.sec-sub{color:var(--mut);margin:14px auto 0;max-width:52ch;text-align:center}
+.grid{display:grid;gap:16px;margin-top:44px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:4px;padding:30px 26px;transition:transform .3s,border-color .3s}
+.card:hover{transform:translateY(-4px);border-color:rgba(200,162,106,.55)}
+.card h3{font-size:20px}
+.card p{color:var(--mut);font-size:14.5px;margin-top:10px}
+.mono{font-family:var(--f-h);font-size:26px;color:var(--acc);opacity:.85}
+.price-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:15px 4px;border-bottom:1px dotted var(--line);font-size:15px}
+.price-row span:first-child{max-width:60%}
+.price-row small{display:block;color:var(--mut2);font-size:12.5px}
+.price-row b{font-family:var(--f-h);font-size:18px;color:var(--acc);white-space:nowrap}
+.masters{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+.master{background:var(--bg2);border:1px solid var(--line);border-radius:4px;padding:28px 22px;text-align:center;transition:transform .3s,border-color .3s}
+.master:hover{transform:translateY(-4px);border-color:rgba(200,162,106,.55)}
+.avatar{width:74px;height:74px;border-radius:50%;margin:0 auto 16px;display:grid;place-items:center;font-family:var(--f-h);font-size:26px;color:var(--acc);
+  background:rgba(200,162,106,.1);border:1px solid rgba(200,162,106,.4)}
+.master h3{font-size:19px}
+.master .role{color:var(--acc);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;margin-top:6px;font-weight:700}
+.master p{color:var(--mut);font-size:13.5px;margin-top:12px}
+.cert{background:linear-gradient(150deg,#241c12,#16120e 60%);border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center}
+.cert h2{font-size:clamp(24px,4.4vw,40px)}
+.cert p{color:var(--mut);margin:14px auto 0;max-width:48ch}
+.cert .btn{margin-top:30px}
+.ftr{border-top:1px solid var(--line);padding:36px 0;font-size:13px;color:var(--mut2)}
+.ftr-in{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between;align-items:center}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media (max-width:900px){.g3,.masters{grid-template-columns:1fr 1fr}.hdr nav{display:none}}
+@media (max-width:600px){.g3,.g2,.masters{grid-template-columns:1fr}section{padding:56px 0}.btn{width:100%}.hero{padding:60px 0 56px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div class="demo-bar"><b>ДЕМО-САЙТ</b> · барбершоп выдуманный, вёрстка настоящая <a href="../index.html#works">← вернуться в портфолио</a></div>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="logo" href="#top">ПОЛКА<em>&nbsp;&amp;</em></a>
+    <nav>
+      <a href="#services">Услуги</a><a href="#prices">Прайс</a><a href="#masters">Мастера</a><a href="#book">Запись</a>
+    </nav>
+    <a class="btn btn-acc" style="padding:11px 20px" href="#book">Записаться</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <span class="kicker rv">Барбершоп · Оренбург · с 2019</span>
+    <h1 class="rv rv-d1">Мужской характер <i>в каждой детали</i></h1>
+    <p class="rv rv-d2">Классические стрижки, моделирование бороды, бритьё опасной бритвой. Горячее полотенце, виски в бокале и тишина, в которой можно наконец подумать.</p>
+    <div class="hero-actions rv rv-d3">
+      <a class="btn btn-acc" href="#book">Записаться на стрижку</a>
+      <a class="btn btn-out" href="#prices">Прайс-лист</a>
+    </div>
+    <div class="rule rv rv-d3"><span>напиток в подарок</span></div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <h2 class="sec-t rv">Что мы делаем</h2>
+    <p class="sec-sub rv">Ни одного «просто постричь». У каждой услуги — свой ритуал и своё время.</p>
+    <div class="grid g3">
+      <div class="card rv"><span class="mono">I</span><h3>Стрижка</h3><p>Классика, помпадур, кроп, фейд. Консультация, мытьё, укладка. 60 минут вашего спокойствия.</p></div>
+      <div class="card rv rv-d1"><span class="mono">II</span><h3>Борода</h3><p>Моделирование по форме лица, горячее полотенце, масло и бальзам. Отрастить красиво — тоже работа.</p></div>
+      <div class="card rv rv-d2"><span class="mono">III</span><h3>Бритьё</h3><p>Опасная бритва, три прохода, холодное завершение. Ритуал, после которого лицо как новое.</p></div>
+      <div class="card rv"><span class="mono">IV</span><h3>Стрижка + борода</h3><p>Комплекс на полтора часа: уходите полностью собранным. Самый популярный формат по пятницам.</p></div>
+      <div class="card rv rv-d1"><span class="mono">V</span><h3>Детская стрижка</h3><p>С 4 лет. Кресло-подъёмник, мультики и терпеливый мастер. Мальчик уходит довольным — это обязательно.</p></div>
+      <div class="card rv rv-d2"><span class="mono">VI</span><h3>Камуфляж седины</h3><p>Мягкое тонирование без эффекта «красного волоса». Результат — свои волосы, только лучше.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="prices" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap" style="max-width:720px">
+    <h2 class="sec-t rv">Прайс-лист</h2>
+    <p class="sec-sub rv">Цены окончательные: напитки, косметику и укладку в них не включаем отдельно — они внутри.</p>
+    <div style="margin-top:34px" class="rv">
+      <div class="price-row"><span>Стрижка машинкой + ножницами<small>60 минут</small></span><b>1 400 ₽</b></div>
+      <div class="price-row"><span>Королевская стрижка<small>с мытьём, массажем головы и укладкой</small></span><b>1 900 ₽</b></div>
+      <div class="price-row"><span>Моделирование бороды<small>горячее полотенце, масло, бальзам</small></span><b>1 100 ₽</b></div>
+      <div class="price-row"><span>Бритьё опасной бритвой<small>полный ритуал</small></span><b>1 300 ₽</b></div>
+      <div class="price-row"><span>Стрижка + борода<small>комплекс, 90 минут</small></span><b>2 300 ₽</b></div>
+      <div class="price-row"><span>Детская стрижка<small>до 12 лет</small></span><b>900 ₽</b></div>
+      <div class="price-row"><span>Камуфляж седины<small>волосы или борода</small></span><b>1 200 ₽</b></div>
+    </div>
+  </div>
+</section>
+
+<section id="masters">
+  <div class="wrap">
+    <h2 class="sec-t rv">Мастера</h2>
+    <p class="sec-sub rv">Три человека, ноль случайности: каждый прошёл школу и продолжает учиться.</p>
+    <div class="masters">
+      <div class="master rv"><div class="avatar">А</div><h3>Артём</h3><div class="role">Барбер · 8 лет</div><p>Классика и помпадуры. Любит головы, которые «не знают, чего хотят», — и знает, что им нужно.</p></div>
+      <div class="master rv rv-d1"><div class="avatar">Д</div><h3>Дамир</h3><div class="role">Барбер · 5 лет</div><p>Фейды и геометрию. Стрижку проверяет линейкой, а не на глаз. Перфекционист, и это видно.</p></div>
+      <div class="master rv rv-d2"><div class="avatar">С</div><h3>Сергей</h3><div class="role">Мастер бритья · 11 лет</div><p>Опасная бритва и борода. Рука, которая не дрожит, и разговор, который не навязчив.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cert" id="book">
+  <div class="wrap">
+    <h2 class="rv">Запись за 30 секунд</h2>
+    <p class="rv rv-d1">Напишите в мессенджер желаемые день и время — подтвердим запись и напомним о визите накануне. Без предоплат и «перезвоним позже».</p>
+    <div class="rv rv-d2"><a class="btn btn-acc" href="../index.html#contact">Записаться через контакт из портфолио</a></div>
+    <p class="rv rv-d3" style="margin-top:22px;font-size:13px;color:var(--mut2)">Оренбург, ул. Примерная, 7 &nbsp;·&nbsp; пн–сб 10:00–21:00, вс — по записи</p>
+  </div>
+</section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap ftr-in">
+    <span>© Барбершоп «Полка» — демонстрационный проект</span>
+    <a href="../index.html#works" style="color:var(--acc)">← Все работы Кирилла</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var items=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){items.forEach(function(el){el.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+  items.forEach(function(el){io.observe(el)});
+})();
+</script>
+</body>
+</html>

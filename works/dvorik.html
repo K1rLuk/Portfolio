@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ландшафтная мастерская «Дворик» — живое демо сайта | Кирилл Лукьяненко</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23f4f3ee'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='34' fill='%235f7a5a' text-anchor='middle'%3EД%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f5f0; --bg2:#ffffff; --ink:#22271f; --mut:rgba(34,39,31,.62); --mut2:rgba(34,39,31,.38);
+  --line:rgba(34,39,31,.12); --acc:#5f7a5a; --acc-d:#ffffff;
+  --f-h:"Cormorant",Georgia,serif; --f-b:"Manrope",system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 var(--f-b);-webkit-font-smoothing:antialiased;overflow-x:clip}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{margin:0;font-family:var(--f-h);font-weight:500;line-height:1.12;letter-spacing:.005em}
+p{margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.demo-bar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;
+  padding:9px 16px;background:#e9e8e1;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--mut2)}
+.demo-bar b{color:var(--acc);font-weight:700}
+.demo-bar a{color:var(--ink);border-bottom:1px dashed var(--mut2)}
+.demo-bar a:hover{color:var(--acc);border-color:var(--acc)}
+.hdr{position:sticky;top:37px;z-index:40;background:rgba(246,245,240,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+.logo{font-family:var(--f-h);font-size:24px;font-weight:600;letter-spacing:.02em}
+.logo span{color:var(--acc)}
+.hdr nav{display:flex;gap:24px;font-size:13px;font-weight:600;color:var(--mut)}
+.hdr nav a{transition:color .2s}.hdr nav a:hover{color:var(--acc)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:100px;padding:15px 30px;font-weight:600;font-size:14px;
+  transition:transform .2s,box-shadow .2s,background .2s,border-color .2s,color .2s}
+.btn-acc{background:var(--acc);color:var(--acc-d)}
+.btn-acc:hover{transform:translateY(-2px);box-shadow:0 16px 36px -16px rgba(95,122,90,.6)}
+.btn-out{border:1px solid var(--line);color:var(--ink);background:transparent}
+.btn-out:hover{border-color:var(--acc);color:var(--acc)}
+.hero{padding:88px 0 78px;position:relative;overflow:hidden;
+  background:radial-gradient(620px 420px at 88% 6%,rgba(95,122,90,.16),transparent 60%),
+             radial-gradient(500px 380px at 4% 96%,rgba(95,122,90,.10),transparent 60%)}
+.hero .kicker{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--acc);font-weight:700}
+.hero h1{font-size:clamp(36px,6.6vw,68px);margin-top:18px;max-width:16ch}
+.hero h1 em{font-style:italic;color:var(--acc)}
+.hero p{color:var(--mut);margin-top:20px;max-width:50ch;font-size:17px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.stats{display:flex;gap:38px;flex-wrap:wrap;margin-top:52px}
+.stat b{display:block;font-family:var(--f-h);font-size:38px;font-weight:600;color:var(--acc);line-height:1}
+.stat span{display:block;font-size:13px;color:var(--mut2);margin-top:6px;max-width:18ch}
+section{padding:82px 0}
+.alt{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sec-t{font-size:clamp(28px,4.6vw,44px);text-align:center}
+.sec-sub{color:var(--mut);margin:14px auto 0;max-width:52ch;text-align:center}
+.grid{display:grid;gap:16px;margin-top:44px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:30px 26px;transition:transform .3s,border-color .3s,box-shadow .3s}
+.alt .card{background:var(--bg2);border:1px solid var(--line)}
+.card:hover{transform:translateY(-4px);border-color:rgba(95,122,90,.5);box-shadow:0 24px 50px -34px rgba(34,39,31,.35)}
+.leaf{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(95,122,90,.12);margin-bottom:18px}
+.leaf svg{width:22px;height:22px;stroke:var(--acc);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:21px}
+.card p{color:var(--mut);font-size:14.5px;margin-top:10px}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:44px}
+.stp{position:relative;padding:26px 20px;background:var(--bg2);border:1px solid var(--line);border-radius:18px;transition:transform .3s,border-color .3s}
+.stp:hover{transform:translateY(-4px);border-color:rgba(95,122,90,.5)}
+.stp i{font-style:normal;font-family:var(--f-h);font-size:30px;color:var(--acc);opacity:.7}
+.stp h3{font-size:17px;margin-top:12px}
+.stp p{font-size:13px;color:var(--mut);margin-top:8px}
+.proj{border-radius:20px;overflow:hidden;border:1px solid var(--line);background:var(--bg2);transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+.proj:hover{transform:translateY(-6px);box-shadow:0 30px 60px -36px rgba(34,39,31,.4)}
+.proj .ph{height:190px;position:relative}
+.ph1{background:linear-gradient(160deg,#8aa383,#5f7a5a 70%)}
+.ph2{background:linear-gradient(160deg,#c9b98f,#8d7b4e 70%)}
+.ph3{background:linear-gradient(160deg,#9db6b9,#5c7d82 70%)}
+.ph::after{content:"";position:absolute;inset:0;background:
+  radial-gradient(circle at 20% 80%,rgba(255,255,255,.35),transparent 40%),
+  radial-gradient(circle at 75% 25%,rgba(0,0,0,.14),transparent 45%)}
+.proj .txt{padding:20px 22px 24px}
+.proj h3{font-size:19px}
+.proj p{color:var(--mut);font-size:13.5px;margin-top:8px}
+.quote{background:var(--bg2);border:1px solid var(--line);border-radius:20px;padding:28px;text-align:center}
+.quote p{font-family:var(--f-h);font-size:20px;font-style:italic;line-height:1.5}
+.quote b{display:block;margin-top:16px;font-size:13px;font-family:var(--f-b)}
+.quote span{display:block;font-size:12px;color:var(--mut2);margin-top:3px}
+.cta{text-align:center;background:linear-gradient(180deg,var(--bg),rgba(95,122,90,.12))}
+.cta h2{font-size:clamp(28px,5vw,46px)}
+.cta p{color:var(--mut);margin:14px auto 0;max-width:46ch}
+.cta .btn{margin-top:30px}
+.ftr{border-top:1px solid var(--line);padding:36px 0;font-size:13px;color:var(--mut2)}
+.ftr-in{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between;align-items:center}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media (max-width:960px){.g3,.steps{grid-template-columns:1fr 1fr}.hdr nav{display:none}}
+@media (max-width:620px){.g3,.g2,.steps,.masters{grid-template-columns:1fr}section{padding:58px 0}.btn{width:100%}.hero{padding:58px 0 52px}.stats{gap:24px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div class="demo-bar"><b>ДЕМО-САЙТ</b> · мастерская выдуманная, вёрстка настоящая <a href="../index.html#works">← вернуться в портфолио</a></div>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="logo" href="#top">Двор<span>ик</span></a>
+    <nav>
+      <a href="#services">Услуги</a><a href="#how">Этапы</a><a href="#works">Проекты</a><a href="#book">Заявка</a>
+    </nav>
+    <a class="btn btn-acc" style="padding:11px 22px" href="#book">Вызвать замерщика</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <span class="kicker rv">Ландшафтная мастерская · Оренбург</span>
+    <h1 class="rv rv-d1">Двор, за которым <em>хочется следить</em></h1>
+    <p class="rv rv-d2">Проектируем и делаем сады «под ключ»: от эскиза до первой стрижки газона. Один договор, один прораб, одна смета — и ничего не «всплывает» по ходу.</p>
+    <div class="hero-actions rv rv-d3">
+      <a class="btn btn-acc" href="#book">Получить смету на свой участок</a>
+      <a class="btn btn-out" href="#works">Смотреть проекты</a>
+    </div>
+    <div class="stats rv rv-d3">
+      <div class="stat"><b>120+</b><span>реализованных участков с 2016 года</span></div>
+      <div class="stat"><b>3 года</b><span>гарантия на растения и дренаж</span></div>
+      <div class="stat"><b>1 день</b><span>выезд замерщика после заявки</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <h2 class="sec-t rv">Что берём на себя</h2>
+    <p class="sec-sub rv">Можно всё — можно только то, что нужно сейчас. Работаем и по полному циклу, и отдельными этапами.</p>
+    <div class="grid g3">
+      <div class="card rv"><span class="leaf"><svg viewBox="0 0 24 24"><path d="M12 21V9m0 0c-3 0-6-2-6-6 4 0 6 2 6 6zm0 0c0-4 2-6 6-6 0 4-3 6-6 6z"/></svg></span><h3>Газон и подготовка почвы</h3><p>Выравнивание, дренаж, плодородный слой, рулонный или посевной газон с автополивом.</p></div>
+      <div class="card rv rv-d1"><span class="leaf"><svg viewBox="0 0 24 24"><path d="M4 20h16M6 20V10l6-6 6 6v10M10 20v-6h4v6"/></svg></span><h3>Мощение и дорожки</h3><p>Плитка, клинкер, натуральный камень. Основание по технологии — через три года ничего не просядет.</p></div>
+      <div class="card rv rv-d2"><span class="leaf"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 8c4 0 7 2 7 5M19 8c-4 0-7 2-7 5"/></svg></span><h3>Озеленение</h3><p>Кустарники, деревья, живые изгороди, клумбы непрерывного цветения. Подбор под наш климат, а не с картинки.</p></div>
+      <div class="card rv"><span class="leaf"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg></span><h3>Свет и полив</h3><p>Архитектурная подсветка, скрытый монтаж, автоматический полив по зонам. Всё обслуживается дешево и просто.</p></div>
+      <div class="card rv rv-d1"><span class="leaf"><svg viewBox="0 0 24 24"><path d="M3 17c3-6 6-9 9-9s6 3 9 9M3 17v4h18v-4"/></svg></span><h3>Дренаж и ливневка</h3><p>Решаем то, что другие маскируют: вода с участка уходит, фундамент и газон остаются сухими.</p></div>
+      <div class="card rv rv-d2"><span class="leaf"><svg viewBox="0 0 24 24"><path d="M4 20 20 4M9 4H4v5M15 20h5v-5"/></svg></span><h3>Уход</h3><p>Абонемент на сезон: стрижки, подкормки, лечение растений. Двор всегда как на сдаче проекта.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="alt">
+  <div class="wrap">
+    <h2 class="sec-t rv">Пять этапов, ноль сюрпризов</h2>
+    <p class="sec-sub rv">Каждый этап заканчивается вашим «да». Не согласовали эскиз — не платите за землю.</p>
+    <div class="steps">
+      <div class="stp rv"><i>01</i><h3>Замер</h3><p>Бесплатный выезд, обмеры, фото, разговор о желаниях.</p></div>
+      <div class="stp rv rv-d1"><i>02</i><h3>Концепция</h3><p>Планировка и стилистика в 2–3 вариантах на одном листе.</p></div>
+      <div class="stp rv rv-d2"><i>03</i><h3>Смета</h3><p>Точная сумма по позициям. Фиксируется договором.</p></div>
+      <div class="stp rv rv-d3"><i>04</i><h3>Работы</h3><p>Прораб на связи каждый день, фотоотчёт по пятницам.</p></div>
+      <div class="stp rv rv-d3"><i>05</i><h3>Сдача</h3><p>Убираем, поливаем, передаём паспорт двора и гарантию.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="works">
+  <div class="wrap">
+    <h2 class="sec-t rv">Проекты</h2>
+    <div class="grid g3">
+      <div class="proj rv"><div class="ph ph1"></div><div class="txt"><h3>Участок 12 соток, Пригородный</h3><p>Газон, плодовые, автополив, живая изгородь из туи. Срок: 6 недель.</p></div></div>
+      <div class="proj rv rv-d1"><div class="ph ph2"></div><div class="txt"><h3>Двор таунхауса, 4 сотки</h3><p>Мощение, зона барбекю, подсветка фасада и дорожек. Срок: 4 недели.</p></div></div>
+      <div class="proj rv rv-d2"><div class="ph ph3"></div><div class="txt"><h3>Сад у воды, 20 соток</h3><p>Дренаж болотистой трети участка, берегоукрепление, прогулочные маршруты. Срок: 3 месяца.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="grid g3">
+      <div class="quote rv"><p>«Второй год подряд заказываем уход. Жена впервые говорит, что завидует соседке, а не наоборот.»</p><b>Ильдар</b><span>участок в Экспериментальном</span></div>
+      <div class="quote rv rv-d1"><p>«Смету не меняли ни разу. Мы сами добавили перголу — и то нам посчитали заранее.»</p><b>Ольга</b><span>дом в Нежилинке</span></div>
+      <div class="quote rv rv-d2"><p>«Пришли после других „ландшафтников“: у нас мокрые пятна на газоне были. Сделали дренаж — проблема исчезла.»</p><b>Сергей</b><span>коттедж на Солянке</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="book">
+  <div class="wrap">
+    <h2 class="rv">Начните с бесплатного замера</h2>
+    <p class="rv rv-d1">Замерщик приедет в течение дня, посмотрит участок и честно скажет, что здесь возможно за ваш бюджет. Никакого давления: решение примете дома, вдвоём.</p>
+    <div class="rv rv-d2"><a class="btn btn-acc" href="../index.html#contact">Оставить заявку (связь из портфолио)</a></div>
+    <p class="rv rv-d3" style="margin-top:22px;font-size:13px;color:var(--mut2)">Оренбург и область в радиусе 60 км &nbsp;·&nbsp; пн–сб 8:00–20:00</p>
+  </div>
+</section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap ftr-in">
+    <span>© Ландшафтная мастерская «Дворик» — демонстрационный проект</span>
+    <a href="../index.html#works" style="color:var(--acc)">← Все работы Кирилла</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var items=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){items.forEach(function(el){el.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+  items.forEach(function(el){io.observe(el)});
+})();
+</script>
+</body>
+</html>
