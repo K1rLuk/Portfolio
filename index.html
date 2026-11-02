@@ -1,1514 +1,353 @@
-
-<!DOCTYPE html>
-<html lang="ru" data-theme="light">
+<!doctype html>
+<html lang="ru">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<!--
-  ШПАРГАЛКА ПО ПРАВКАМ:
-  · Телефон:   +79097077817  и  +7 909 707-78-17
-  · Telegram:  t.me/KirillLukianenko
-  · WhatsApp:  wa.me/79097077817
-  · Почта:     kir.lukianenko@gmail.com
-  · Цены:      6 900 / 13 900 / 27 900  (и опции калькулятора: блок CALC в JS)
-  · Темы:      по умолчанию тема устройства (если не определена — светлая),
-               переключатель в шапке, выбор запоминается
-  · Работы:    папка works/ рядом (garazh12.html, polka.html, dvorik.html)
-  ФИРМЕННЫЙ СТИЛЬ: монохром + liquid glass (backdrop-filter), расфокус при
-  появлении блоков, блики на рамках. Тяжёлого нет: iframe и анимированных
-  орбов не используем, свечения нарисованы градиентами.
--->
-<title>Сайты под ключ от 6 900 ₽ — Кирилл Лукьяненко | Оренбург, вся Россия</title>
-<meta name="description" content="Разработка сайтов по техническому заданию: лендинги, корпоративные сайты, интернет-магазины. Оренбург и удалённо по всей России. Цена и срок фиксируются до старта, правки бесплатные. От 6 900 ₽.">
+<title>Разработка сайтов под ключ от 6 999 ₽ — Кирилл Лукьяненко, Оренбург</title>
+<meta name="description" content="Лендинги, корпоративные сайты и интернет-магазины под ключ. Цена и срок фиксируются до старта, правки бесплатно, оплата 50/50. Оренбург, удалённо по всей России.">
+<meta name="author" content="Кирилл Лукьяненко">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://k1rluk.github.io/Portfolio/">
-<link rel="alternate" hreflang="ru" href="https://k1rluk.github.io/Portfolio/">
-
+<meta name="format-detection" content="telephone=no">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f5f5f2" id="metaTheme">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Сайты под ключ от 6 999 ₽ — Кирилл Лукьяненко">
+<meta property="og:description" content="Цена и срок фиксируются до старта, правки бесплатно, оплата 50/50. Оренбург и вся Россия.">
 <meta property="og:url" content="https://k1rluk.github.io/Portfolio/">
-<meta property="og:site_name" content="Кирилл Лукьяненко — разработка сайтов">
-<meta property="og:title" content="Сайты под ключ от 6 900 ₽ — цена и срок фиксируются до старта">
-<meta property="og:description" content="Лендинги, корпоративные сайты и магазины. Правки бесплатно, исходники и домен — ваши. Первый разбор задачи ни к чему не обязывает.">
-<meta property="og:image" content="https://k1rluk.github.io/Portfolio/og-image.png">
+<meta property="og:image" content="https://k1rluk.github.io/Portfolio/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="canonical" href="https://k1rluk.github.io/Portfolio/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://k1rluk.github.io/Portfolio/og-image.png">
-<meta name="theme-color" id="metaTheme" content="#ffffff">
-
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%230a0a0a'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' fill='%23fff' text-anchor='middle'%3EК%3C/text%3E%3C/svg%3E">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600&family=Manrope:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
-
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="img/icon-180.png">
+<link rel="preload" href="fonts/onest-cyr.woff2" as="font" type="font/woff2" crossorigin>
 <script>
-(function(){
-  var t = 'light';
-  try { t = localStorage.getItem('kl-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); } catch(e){}
-  document.documentElement.setAttribute('data-theme', t);
-  var m = document.getElementById('metaTheme');
-  if (m) m.setAttribute('content', t === 'dark' ? '#050505' : '#ffffff');
-})();
+/* Тема до отрисовки: системная → светлая */
+(function(){var d=document.documentElement,t=null;d.classList.add('js');
+if(t!=='dark'&&t!=='light'){t=(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light'}
+if(t==='dark')d.classList.add('dark');
+var m=document.getElementById('metaTheme');if(m)m.setAttribute('content',t==='dark'?'#0a0a0b':'#f5f5f2');})();
 </script>
-
-<style>
-/* ==========================================================
-   ТОКЕНЫ ТЕМ
-   ========================================================== */
-:root{
-  --bg:#ffffff; --bg2:#f5f5f2;
-  --ink:#0a0a0a;
-  --mut:rgba(10,10,10,.60); --mut2:rgba(10,10,10,.38);
-  --line:rgba(10,10,10,.10); --line2:rgba(10,10,10,.24);
-  --glass:rgba(255,255,255,.55);
-  --glass2:rgba(255,255,255,.80);
-  --glass-brd:rgba(10,10,10,.09);
-  --glass-shadow:0 1px 2px rgba(10,10,10,.04), 0 18px 48px -28px rgba(10,10,10,.25),
-                 inset 0 1px 0 rgba(255,255,255,.95), inset 0 -1px 0 rgba(10,10,10,.05);
-  --header-bg:rgba(255,255,255,.66);
-  --inv-bg:#0a0a0a; --inv-ink:#ffffff; --inv-mut:rgba(255,255,255,.62); --inv-line:rgba(255,255,255,.16);
-  /* акцент — янтарь: только он выделяет важное (цены, CTA, маркеры) */
-  --acc:#e8890c; --acc-strong:#b45f00; --acc-soft:rgba(232,137,12,.14); --acc-glow:rgba(232,137,12,.45); --acc-on:#ffffff;
-  --on-accent:#ffffff; /* текст поверх плашки акцентного цвета */
-  --glow:10,10,10; --glow-a:.10; --glow-b:.06; --sweep:.40; --grain:.030;
-  --f-h:"Unbounded","Manrope",system-ui,sans-serif;
-  --f-b:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --f-hand:"Caveat",cursive;
-  --max:1160px; --r:28px; --r-m:20px;
-  color-scheme:light;
-}
-html[data-theme="dark"]{
-  --on-accent:#141005;
-  color-scheme:dark;
-  --bg:#050505; --bg2:#000000;
-  --ink:#ffffff;
-  --mut:rgba(255,255,255,.62); --mut2:rgba(255,255,255,.38);
-  --line:rgba(255,255,255,.10); --line2:rgba(255,255,255,.24);
-  --glass:rgba(255,255,255,.05);
-  --glass2:rgba(255,255,255,.09);
-  --glass-brd:rgba(255,255,255,.10);
-  --glass-shadow:inset 0 1px 0 rgba(255,255,255,.07), inset 0 -1px 0 rgba(0,0,0,.4),
-                 0 30px 80px -50px rgba(0,0,0,.95);
-  --header-bg:rgba(10,10,10,.60);
-  --inv-bg:#ffffff; --inv-ink:#000000; --inv-mut:rgba(0,0,0,.62); --inv-line:rgba(0,0,0,.14);
-  --acc:#ffb020; --acc-strong:#ffc95e; --acc-soft:rgba(255,176,32,.14); --acc-glow:rgba(255,176,32,.35); --acc-on:#141005;
-  --glow:255,255,255; --glow-a:.26; --glow-b:.12; --sweep:.14; --grain:.050;
-}
-
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;overflow-x:hidden;overflow-x:clip}
-body{
-  margin:0;background:var(--bg);color:var(--ink);
-  font-family:var(--f-b);font-size:17px;line-height:1.65;letter-spacing:-.01em;
-  -webkit-font-smoothing:antialiased;overflow-x:hidden;
-  -webkit-tap-highlight-color:transparent;
-}
-p,li,summary{overflow-wrap:break-word}
-::selection{background:var(--inv-bg);color:var(--inv-ink)}
-img,svg{display:block;max-width:100%}
-a{color:inherit;text-decoration:none}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-ul,ol{margin:0;padding:0;list-style:none}
-h1,h2,h3{margin:0;font-family:var(--f-h);font-weight:600;line-height:1.12;letter-spacing:-.02em;overflow-wrap:break-word;hyphens:auto}
-p{margin:0}
-:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:6px}
-
-html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after{
-  transition:background-color .45s ease, color .45s ease, border-color .45s ease, box-shadow .45s ease !important;
-}
-
-body::after{
-  content:"";position:fixed;inset:0;z-index:2000;pointer-events:none;opacity:var(--grain);
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-::-webkit-scrollbar{width:10px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:var(--line2);border-radius:10px;border:3px solid var(--bg)}
-
-.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
-section{scroll-margin-top:110px;position:relative}
-section > .wrap{position:relative;z-index:1}
-
-/* ==========================================================
-   СТЕКЛО: фирменный liquid glass с настоящим блюром
-   ========================================================== */
-.glass{
-  background:var(--glass);
-  border:1px solid var(--glass-brd);
-  border-radius:var(--r);
-  backdrop-filter:blur(16px) saturate(150%);
-  -webkit-backdrop-filter:blur(16px) saturate(150%);
-  box-shadow:var(--glass-shadow);
-}
-.glow{position:absolute;border-radius:50%;pointer-events:none;z-index:0}
-
-/* водяной знак живёт ОТДЕЛЬНОЙ полосой и никогда ни на что не налезает */
-.band-mark{padding:clamp(26px,4.5vw,54px) 16px;overflow:hidden;display:flex;justify-content:center}
-.band-mark span{
-  font-family:var(--f-h);font-weight:600;letter-spacing:-.03em;white-space:nowrap;line-height:1;
-  font-size:clamp(30px,10.2vw,148px);
-  color:transparent;-webkit-text-stroke:1.5px var(--line);
-  user-select:none;
-}
-@supports not (-webkit-text-stroke:1px #000){ .band-mark span{color:var(--line)} }
-
-/* ==========================================================
-   ШАПКА
-   ========================================================== */
-.header{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));left:0;right:0;z-index:100}
-.header-in{
-  max-width:var(--max);margin:0 auto;
-  display:flex;align-items:center;justify-content:space-between;gap:16px;
-  height:62px;padding:0 8px 0 26px;width:calc(100% - 32px);
-  background:var(--header-bg);
-  border:1px solid var(--glass-brd);border-radius:100px;
-  backdrop-filter:blur(20px) saturate(160%);
-  -webkit-backdrop-filter:blur(20px) saturate(160%);
-  box-shadow:var(--glass-shadow);
-  transition:background .3s ease,border-color .3s ease;
-}
-.header.is-stuck .header-in{background:var(--glass2)}
-
-.logo{font-family:var(--f-h);font-size:clamp(14px,0.81vw,15.5px);font-weight:500;letter-spacing:-.01em;white-space:nowrap}
-.logo b{font-weight:600}
-.logo span{color:var(--mut2);font-weight:400}
-
-.nav{display:flex;gap:24px}
-.nav a{font-size:clamp(14px,0.81vw,15.5px);font-weight:500;color:var(--mut);transition:color .2s}
-.nav a:hover{color:var(--ink)}
-
-.header-right{display:flex;align-items:center;gap:10px}
-.header-tel{font-size:clamp(14px,0.81vw,15.5px);font-weight:600;letter-spacing:-.01em;color:var(--mut);transition:color .2s;margin-right:6px}
-.header-tel:hover{color:var(--ink)}
-
-.theme-btn{
-  width:42px;height:42px;border-radius:50%;position:relative;flex-shrink:0;
-  border:1px solid var(--glass-brd);background:var(--glass);
-  transition:transform .25s ease,border-color .25s ease;
-}
-.theme-btn:hover{transform:rotate(18deg);border-color:var(--line2)}
-.theme-btn svg{
-  position:absolute;inset:0;margin:auto;width:17px;height:17px;
-  stroke:var(--ink);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;
-  transition:opacity .35s ease, transform .5s cubic-bezier(.2,.7,.2,1);
-}
-html[data-theme="light"] .i-sun{opacity:0;transform:rotate(-90deg) scale(.4)}
-html[data-theme="light"] .i-moon{opacity:1;transform:none}
-html[data-theme="dark"] .i-moon{opacity:0;transform:rotate(90deg) scale(.4)}
-html[data-theme="dark"] .i-sun{opacity:1;transform:none}
-
-.burger{display:none;width:44px;height:44px;border-radius:50%;position:relative}
-.burger i{position:absolute;left:12px;width:20px;height:1.6px;background:var(--ink);transition:.3s;border-radius:2px}
-.burger i:nth-child(1){top:18px}
-.burger i:nth-child(2){top:25px}
-body.menu-open .burger i:nth-child(1){top:21.5px;transform:rotate(45deg)}
-body.menu-open .burger i:nth-child(2){top:21.5px;transform:rotate(-45deg)}
-
-/* ==========================================================
-   КНОПКИ
-   ========================================================== */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  border-radius:100px;padding:16px 28px;
-  font-size:15px;font-weight:600;letter-spacing:-.01em;white-space:nowrap;
-  transition:transform .22s ease, box-shadow .22s ease, background .22s ease, border-color .22s ease;
-}
-.btn:active{transform:translateY(0) scale(.985)}
-.btn-solid{background:var(--inv-bg);color:var(--inv-ink)}
-.btn-solid:hover{transform:translateY(-2px);box-shadow:0 16px 44px -18px rgba(var(--glow),.55)}
-.btn-ghost{border:1px solid var(--line2);color:var(--ink);background:var(--glass);
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
-.btn-sm{padding:11px 20px;font-size:clamp(14px,0.81vw,15.5px)}
-.btn svg{width:16px;height:16px;fill:currentColor;flex-shrink:0}
-
-/* ==========================================================
-   ПЕРВЫЙ ЭКРАН
-   ========================================================== */
-.hero{padding:170px 0 0;overflow:hidden}
-.hero .g1{width:640px;height:640px;top:-220px;right:-180px;opacity:var(--glow-a);
-  background:radial-gradient(circle at 50% 50%, rgba(var(--glow),.55), transparent 62%)}
-.hero .g2{width:520px;height:520px;bottom:-200px;left:-220px;opacity:var(--glow-b);
-  background:radial-gradient(circle at 50% 50%, rgba(var(--glow),.6), transparent 62%)}
-
-.hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:64px;align-items:center}
-.hero-grid > *{min-width:0}
-
-h1{font-size:clamp(32px,4.9vw,58px);font-weight:600;letter-spacing:-.03em}
-h1 em{font-style:normal;position:relative;white-space:nowrap}
-h1 em::after{
-  content:"";position:absolute;left:-2%;right:-2%;bottom:-.10em;height:.30em;z-index:-1;
-  background:linear-gradient(90deg, rgba(var(--glow),.38), rgba(var(--glow),.10));
-  filter:blur(10px);border-radius:8px;
-}
-.hero-sub{color:var(--mut);font-size:17.5px;line-height:1.66;max-width:50ch;margin-top:26px}
-.hero-sub b{color:var(--ink);font-weight:600}
-.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
-.hero-under{margin-top:22px;font-size:clamp(14px,0.81vw,15.5px);color:var(--mut2);max-width:44ch}
-
-.panel{padding:28px 28px 26px;position:relative}
-.panel-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 14px;font-size:clamp(14px,0.81vw,15.5px);color:var(--mut2)}
-.panel-top b{color:var(--mut);font-weight:600}
-.panel-rows{margin-top:20px;border-top:1px solid var(--line)}
-.panel-row{
-  display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 18px;
-  padding:15px 0;border-bottom:1px solid var(--line);font-size:clamp(14.5px,0.83vw,16px);
-}
-.panel-row .k{color:var(--mut)}
-.panel-row .v{font-weight:600;text-align:right;letter-spacing:-.01em}
-.panel-note{margin-top:16px;font-size:clamp(14px,0.81vw,15.5px);line-height:1.55;color:var(--mut2)}
-.panel .btn{width:100%;margin-top:20px}
-
-/* ==========================================================
-   БЕГУЩАЯ СТРОКА
-   ========================================================== */
-.mq{
-  margin-top:clamp(70px,9vw,110px);
-  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-  padding:17px 0;overflow:hidden;
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
-  mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
-}
-.mq-track{display:flex;width:max-content;animation:mq 46s linear infinite}
-.mq:hover .mq-track{animation-play-state:paused}
-@keyframes mq{to{transform:translateX(-50%)}}
-.mq ul{display:flex;align-items:center}
-.mq li{font-size:clamp(14px,0.81vw,15.5px);font-weight:500;color:var(--mut);white-space:nowrap}
-.mq li::after{content:"·";margin:0 26px;color:var(--mut2)}
-
-/* ==========================================================
-   СЕКЦИИ
-   ========================================================== */
-.section{padding:clamp(84px,11vw,132px) 0}
-.section-head{max-width:700px;margin-bottom:clamp(38px,5vw,58px)}
-.section-head h2{font-size:clamp(25px,3.5vw,40px);font-weight:600}
-.section-head p{color:var(--mut);margin-top:16px;font-size:16.5px;line-height:1.65;max-width:58ch}
-
-.path{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.path > *{min-width:0}
-.path-card{padding:30px 28px;transition:border-color .3s,background .3s,transform .3s,box-shadow .3s}
-.path-card:hover{border-color:var(--line2);background:var(--glass2);transform:translateY(-4px)}
-.path-n{font-family:var(--f-h);font-weight:300;font-size:34px;color:var(--mut2);letter-spacing:-.02em}
-.path-card h3{font-size:17px;font-weight:600;margin-top:18px;letter-spacing:-.015em}
-.path-card p{color:var(--mut);font-size:clamp(14.5px,0.83vw,16px);line-height:1.6;margin-top:10px}
-
-.srv{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.srv > *{min-width:0}
-.srv-card{padding:32px 30px 28px;display:flex;flex-direction:column;transition:border-color .3s,background .3s,transform .3s,box-shadow .3s}
-.srv-card:hover{border-color:var(--line2);background:var(--glass2);transform:translateY(-4px)}
-.srv-n{font-family:var(--f-h);font-weight:300;font-size:clamp(14px,0.81vw,15.5px);color:var(--mut2);letter-spacing:.06em}
-.srv-card h3{font-size:20px;font-weight:600;margin-top:20px}
-.srv-card > p{color:var(--mut);font-size:15px;line-height:1.6;margin-top:12px}
-.srv-card ul{margin-top:20px;margin-bottom:24px;display:grid;gap:9px}
-.srv-card li{font-size:clamp(14px,0.81vw,15.5px);color:var(--mut);line-height:1.5;padding-left:18px;position:relative}
-.srv-card li::before{content:"—";position:absolute;left:0;color:var(--mut2)}
-.srv-foot{margin-top:auto;padding-top:20px;display:flex;align-items:baseline;gap:10px;border-top:1px solid var(--line)}
-.srv-price{font-family:var(--f-h);font-weight:500;font-size:17px;letter-spacing:-.02em}
-.srv-time{font-size:clamp(14px,0.81vw,15.5px);color:var(--mut2)}
-
-/* ==========================================================
-   РАБОТЫ: окна браузера с мини-макетом + живые демо (works/)
-   ========================================================== */
-.works{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.badge{display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-  color:var(--acc-strong);background:var(--acc-soft);border:1px solid var(--acc-soft);border-radius:100px;padding:4px 12px}
-.kicker{display:block;font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--acc-strong);margin-bottom:16px}
-.hero-badge{display:inline-flex;align-items:center;gap:10px;margin-bottom:26px;padding:8px 16px;border-radius:100px;
-  border:1px solid var(--glass-brd);background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  font-size:clamp(14px,0.81vw,15.5px);font-weight:600;color:var(--mut)}
-.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 4px var(--acc-soft);animation:pulse 2.6s ease infinite}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 3px var(--acc-soft)}50%{box-shadow:0 0 0 8px transparent}}
-.works > *{min-width:0}
-.work{display:flex;flex-direction:column;gap:16px;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
-.work:hover{transform:translateY(-7px)}
-.browser{
-  position:relative;border-radius:var(--r-m);overflow:hidden;
-  border:1px solid var(--glass-brd);background:var(--glass);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  box-shadow:var(--glass-shadow);
-}
-.b-bar{display:flex;align-items:center;gap:6px;padding:11px 14px;border-bottom:1px solid var(--line);background:var(--glass2)}
-.b-bar i{width:9px;height:9px;border-radius:50%;background:var(--line2)}
-.b-bar em{
-  font-style:normal;font-size:12.5px;color:var(--mut2);margin-left:8px;
-  border:1px solid var(--line);border-radius:100px;padding:2px 10px;
-  max-width:60%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
-}
-.b-body{display:block;height:200px;position:relative;overflow:hidden}
-.b-body::after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(115deg,transparent 34%,rgba(255,255,255,var(--sweep)) 50%,transparent 66%);
-  transform:translateX(-130%);transition:transform .9s ease;
-}
-.work:hover .b-body::after{transform:translateX(130%)}
-.pv-garage{background:
-  linear-gradient(rgba(255,255,255,.92),rgba(255,255,255,.92)) left 22px top 26px / 118px 11px no-repeat,
-  linear-gradient(rgba(255,255,255,.40),rgba(255,255,255,.40)) left 22px top 46px / 168px 6px no-repeat,
-  linear-gradient(rgba(255,255,255,.40),rgba(255,255,255,.40)) left 22px top 58px / 132px 6px no-repeat,
-  linear-gradient(#ffb000,#ffb000) left 22px top 80px / 86px 26px no-repeat,
-  radial-gradient(circle at 82% 78%, rgba(255,176,0,.30), transparent 55%),
-  repeating-linear-gradient(135deg, rgba(255,176,0,.22) 0 8px, transparent 8px 22px) right -20px bottom -30px / 62% 90% no-repeat,
-  #101010;}
-.pv-polka{background:
-  linear-gradient(rgba(240,228,208,.92),rgba(240,228,208,.92)) left 22px top 30px / 96px 12px no-repeat,
-  linear-gradient(rgba(240,228,208,.42),rgba(240,228,208,.42)) left 22px top 52px / 150px 6px no-repeat,
-  linear-gradient(#c8a26a,#c8a26a) left 22px top 78px / 74px 24px no-repeat,
-  radial-gradient(circle at 78% 30%, rgba(200,162,106,.35), transparent 52%),
-  repeating-linear-gradient(90deg, rgba(200,162,106,.16) 0 2px, transparent 2px 26px) right 0 top 0 / 46% 100% no-repeat,
-  #16120e;}
-.pv-dvorik{background:
-  linear-gradient(rgba(20,30,20,.85),rgba(20,30,20,.85)) left 22px top 28px / 128px 11px no-repeat,
-  linear-gradient(rgba(20,30,20,.40),rgba(20,30,20,.40)) left 22px top 48px / 158px 6px no-repeat,
-  linear-gradient(#5f7a5a,#5f7a5a) left 22px top 74px / 82px 25px no-repeat,
-  radial-gradient(circle at 80% 80%, rgba(95,122,90,.30), transparent 55%),
-  radial-gradient(circle at 62% 18%, rgba(95,122,90,.18), transparent 40%),
-  #f4f3ee;}
-.work-meta b{font-family:var(--f-h);font-weight:500;font-size:15.5px;letter-spacing:-.015em;display:block}
-.work-meta span{display:block;color:var(--mut);font-size:clamp(14px,0.81vw,15.5px);line-height:1.45;margin-top:7px}
-.work-meta em{display:block;font-style:normal;color:var(--mut2);font-size:clamp(14px,0.81vw,15.5px);margin-top:9px;transition:color .25s}
-font-size:clamp(11.5px,1.1vw,12.5px);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;
-  background:rgba(10,10,11,.55);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-  border-radius:100px;padding:5px 11px;transition:background .25s,border-color .25s}
-.work-tag i{width:6px;height:6px;border-radius:50%;background:#3ddc84;box-shadow:0 0 0 2px rgba(61,220,132,.25)}
-.work:hover .work-tag{background:var(--acc);border-color:var(--acc);color:var(--on-accent)}
-.work:hover .work-meta em{color:var(--ink)}
-.works-note{margin-top:34px;color:var(--mut2);font-size:clamp(14px,0.81vw,15.5px);max-width:64ch;line-height:1.6}
-.works-note b{color:var(--mut);font-weight:600}
-
-/* ==========================================================
-   ПРОЦЕСС
-   ========================================================== */
-.process-band{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.steps{border-top:1px solid var(--line)}
-.step{
-  display:grid;grid-template-columns:96px 1fr;gap:28px;
-  padding:32px 0;border-bottom:1px solid var(--line);transition:padding-left .3s ease;
-}
-.step:hover{padding-left:10px}
-.step-n{font-family:var(--f-h);font-weight:300;font-size:40px;line-height:1;color:var(--mut2);letter-spacing:-.03em}
-.step h3{font-size:18px;font-weight:600}
-.step p{color:var(--mut);font-size:15.5px;line-height:1.65;margin-top:9px;max-width:64ch}
-.step-meta{
-  display:inline-block;margin-top:14px;padding:6px 14px;border-radius:100px;
-  border:1px solid var(--line);background:var(--glass);
-  font-size:clamp(14px,0.81vw,15.5px);font-weight:500;color:var(--mut);
-}
-
-/* ==========================================================
-   ЦЕНЫ + КАЛЬКУЛЯТОР
-   ========================================================== */
-.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:26px 18px;align-items:stretch}
-.prices > *{min-width:0}
-.price{padding:34px 30px 30px;display:flex;flex-direction:column;position:relative;transition:transform .3s,border-color .3s,background .3s,box-shadow .3s}
-.price:hover{transform:translateY(-5px);border-color:var(--line2)}
-.price h3{font-size:20px;font-weight:600}
-.price-desc{color:var(--mut);font-size:clamp(14.5px,0.83vw,16px);line-height:1.55;margin-top:10px;min-height:44px}
-.price-sum{margin:24px 0;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.price-sum .from{display:block;font-size:clamp(14px,0.81vw,15.5px);color:var(--mut2);margin-bottom:6px}
-.price-sum .val{font-family:var(--f-h);font-weight:500;font-size:32px;letter-spacing:-.03em;line-height:1}
-.price-sum .val sup{font-size:15px;top:-.8em;margin-left:2px}
-.price-per{display:block;margin-top:9px;font-size:clamp(14px,0.81vw,15.5px);color:var(--mut2)}
-.price ul{display:grid;gap:11px;margin-bottom:28px}
-.price li{font-size:clamp(14.5px,0.83vw,16px);color:var(--mut);line-height:1.5;display:flex;gap:10px}
-.price li svg{width:14px;height:14px;stroke:currentColor;opacity:.55;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:5px}
-.price .btn{width:100%;margin-top:auto}
-
-.price-feat{background:var(--inv-bg);border-color:var(--inv-bg);color:var(--inv-ink)}
-.price-feat:hover{border-color:var(--inv-bg)}
-.price-feat .price-desc,.price-feat li{color:var(--inv-mut)}
-.price-feat .price-sum{border-color:var(--inv-line)}
-.price-feat .from,.price-feat .price-per{color:var(--inv-mut)}
-.price-flag{
-  position:absolute;top:-13px;left:50%;transform:translateX(-50%);
-  background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:100px;padding:6px 16px;
-  font-size:13.5px;font-weight:600;white-space:nowrap;
-}
-.prices-note{margin-top:34px;color:var(--mut2);font-size:clamp(14.5px,0.83vw,16px);max-width:66ch;line-height:1.6}
-.prices-note b{color:var(--mut);font-weight:600}
-
-.included{
-  margin-top:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
-  background:var(--line);border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden;
-}
-.included > *{min-width:0}
-.included div{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:18px 20px;font-size:clamp(14px,0.81vw,15.5px);color:var(--mut);line-height:1.45}
-.included b{display:block;color:var(--ink);font-size:clamp(14px,0.81vw,15.5px);font-weight:600;margin-bottom:5px;letter-spacing:-.01em}
-
-/* калькулятор сметы */
-.calc{margin-top:56px;padding:clamp(28px,4.5vw,44px);position:relative;overflow:hidden}
-.calc h3{font-size:clamp(20px,2.6vw,28px)}
-.calc-lead{color:var(--mut);font-size:15px;margin-top:10px;max-width:52ch}
-.calc-groups{display:grid;gap:22px;margin-top:28px}
-.calc-groups fieldset{border:0;margin:0;padding:0}
-.calc-groups legend{font-size:clamp(14px,0.81vw,15.5px);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mut2);margin-bottom:12px;padding:0}
-.pills{display:flex;flex-wrap:wrap;gap:10px}
-.pill{position:relative;display:inline-flex}
-.pill input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
-.pill span{
-  display:inline-flex;align-items:center;gap:8px;
-  border:1px solid var(--line2);border-radius:100px;padding:11px 18px;
-  font-size:clamp(14px,0.81vw,15.5px);font-weight:600;color:var(--mut);cursor:pointer;
-  transition:background .25s,color .25s,border-color .25s,transform .2s;
-  background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-}
-.pill span small{font-weight:500;color:var(--mut2);font-size:clamp(14px,0.81vw,15.5px)}
-.pill:hover span{border-color:var(--ink);color:var(--ink)}
-.pill input:checked + span{background:var(--inv-bg);color:var(--inv-ink);border-color:var(--inv-bg)}
-.pill input:checked + span small{color:var(--inv-mut)}
-.pill input:focus-visible + span{outline:2px solid var(--ink);outline-offset:3px}
-.calc-out{
-  margin-top:30px;padding-top:26px;border-top:1px solid var(--line);
-  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;
-}
-.calc-sum .k{font-size:clamp(14px,0.81vw,15.5px);color:var(--mut2);display:block;margin-bottom:6px}
-.calc-sum .v{font-family:var(--f-h);font-weight:500;font-size:clamp(26px,3.4vw,38px);letter-spacing:-.03em;line-height:1}
-.calc-sum .v sup{font-size:16px;top:-.8em;margin-left:2px}
-.calc-note{font-size:clamp(14px,0.81vw,15.5px);color:var(--mut2);margin-top:8px;max-width:40ch}
-.calc-btns{display:flex;flex-wrap:wrap;gap:10px}
-
-/* ==========================================================
-   СРАВНЕНИЕ / ПРИНЦИПЫ
-   ========================================================== */
-.compare{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.compare > *{min-width:0}
-.cmp{padding:30px 28px;transition:border-color .3s,background .3s,transform .3s,box-shadow .3s}
-.cmp:hover{border-color:var(--line2);transform:translateY(-3px)}
-.cmp .tag{display:block;font-size:clamp(14px,0.81vw,15.5px);color:var(--mut2);margin-bottom:12px}
-.cmp h3{font-size:18px;font-weight:600}
-.cmp ul{margin-top:16px;display:grid;gap:10px}
-.cmp li{font-size:clamp(14px,0.81vw,15.5px);color:var(--mut);line-height:1.55;padding-left:20px;position:relative}
-.cmp li.minus::before{content:"—";position:absolute;left:0;color:var(--mut2)}
-.cmp li.plus::before{content:"+";position:absolute;left:1px;color:var(--ink);font-weight:700}
-.cmp-me{background:var(--inv-bg);border-color:var(--inv-bg);color:var(--inv-ink)}
-.cmp-me:hover{border-color:var(--inv-bg)}
-.cmp-me .tag{color:var(--inv-mut)}
-.cmp-me li{color:var(--inv-mut)}
-.cmp-me li.plus::before{color:var(--inv-ink)}
-
-.why{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.why > *{min-width:0}
-.why-card{padding:28px 30px;transition:border-color .3s,background .3s,transform .3s,box-shadow .3s}
-.why-card:hover{border-color:var(--line2);background:var(--glass2);transform:translateY(-3px)}
-.why-card h3{font-size:16.5px;font-weight:600;letter-spacing:-.015em}
-.why-card p{color:var(--mut);font-size:clamp(14.5px,0.83vw,16px);line-height:1.62;margin-top:10px}
-.srv-card:hover,.path-card:hover,.why-card:hover,.price:hover,.cmp:hover{
-  box-shadow:var(--glass-shadow), 0 0 46px -18px rgba(var(--glow),.35);
-}
-
-/* ==========================================================
-   ОБО МНЕ / FAQ / КОНТАКТЫ
-   ========================================================== */
-.about{display:grid;grid-template-columns:1fr 400px;gap:clamp(40px,6vw,80px);align-items:start}
-.about > *{min-width:0}
-.about-text p{color:var(--mut);font-size:16.5px;line-height:1.75}
-.about-text p + p{margin-top:18px}
-.about-text b{color:var(--ink);font-weight:600}
-.about-sign{margin-top:34px;display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap}
-.about-sign .hand{font-family:var(--f-hand);font-weight:600;font-size:clamp(30px,5vw,42px);line-height:1;color:var(--ink);transform:rotate(-2deg)}
-.about-sign small{font-size:clamp(14px,0.81vw,15.5px);color:var(--mut2);line-height:1.5;padding-bottom:4px}
-
-.about-card{padding:8px 28px 24px}
-.about-card .row{display:flex;justify-content:space-between;gap:18px;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--line);font-size:clamp(14.5px,0.83vw,16px)}
-.about-card .row:last-child{border-bottom:0}
-.about-card .k{color:var(--mut)}
-.about-card .v{font-weight:600;text-align:right}
-.about-card .cap{padding:20px 0 6px;font-family:var(--f-h);font-size:clamp(14px,0.81vw,15.5px);font-weight:500;color:var(--mut2)}
-
-.faq{overflow:hidden;padding:6px 34px}
-.faq-item{border-bottom:1px solid var(--line)}
-.faq-item:last-child{border-bottom:0}
-.faq-item summary{
-  list-style:none;cursor:pointer;position:relative;
-  padding:24px 44px 24px 0;font-size:16.5px;font-weight:600;letter-spacing:-.015em;
-  color:var(--mut);transition:color .25s;
-}
-.faq-item summary::-webkit-details-marker{display:none}
-.faq-item summary:hover{color:var(--ink)}
-.faq-item summary::before,.faq-item summary::after{
-  content:"";position:absolute;right:8px;top:50%;background:currentColor;border-radius:2px;
-  transition:transform .32s ease,opacity .32s ease;
-}
-.faq-item summary::before{width:14px;height:1.6px;margin-top:-.8px}
-.faq-item summary::after{width:1.6px;height:14px;right:14.2px;margin-top:-7px}
-.faq-item[open] summary{color:var(--ink)}
-.faq-item[open] summary::after{transform:rotate(90deg);opacity:0}
-.faq-body{padding:0 44px 0 0;overflow:hidden;color:var(--mut);font-size:15px;line-height:1.7}
-.faq-in{padding-bottom:26px}
-.faq-body b{color:var(--ink);font-weight:600}
-
-.contact{overflow:hidden}
-.contact .g1{width:720px;height:720px;left:50%;top:50%;transform:translate(-50%,-50%);opacity:var(--glow-a);
-  background:radial-gradient(circle, rgba(var(--glow),.45), transparent 60%)}
-.contact-card{border-radius:36px;padding:clamp(44px,7vw,84px) clamp(26px,5vw,72px);text-align:center}
-.contact-card h2{font-size:clamp(24px,3.6vw,42px);font-weight:600;max-width:22ch;margin:0 auto}
-.contact-card .lead{color:var(--mut);font-size:16.5px;line-height:1.65;max-width:46ch;margin:20px auto 0}
-.scarcity{
-  display:inline-flex;align-items:center;gap:10px;max-width:100%;margin-top:28px;padding:10px 20px;
-  border:1px solid var(--line2);border-radius:100px;background:var(--glass);
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  font-size:clamp(14px,0.81vw,15.5px);font-weight:500;color:var(--mut);
-}
-.channels{max-width:600px;margin:32px auto 0;display:grid;gap:12px;text-align:left}
-.channel{
-  display:flex;align-items:center;gap:16px;padding:15px 18px;
-  border:1px solid var(--glass-brd);border-radius:var(--r-m);background:var(--glass);
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  transition:border-color .25s,background .25s,transform .25s;
-}
-.channel:hover{border-color:var(--line2);background:var(--glass2);transform:translateY(-2px)}
-.ch-ico{
-  width:42px;height:42px;border-radius:14px;flex-shrink:0;display:grid;place-items:center;
-  background:rgba(var(--glow),.07);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.25), inset 0 -1px 0 rgba(var(--glow),.12);
-}
-.ch-ico svg{width:20px;height:20px;fill:var(--ink)}
-.ch-txt{flex:1;min-width:0}
-.ch-txt .k{display:block;font-size:clamp(14px,0.81vw,15.5px);color:var(--mut2)}
-.ch-txt .v{display:block;font-size:16px;font-weight:600;letter-spacing:-.015em;margin-top:2px;overflow-wrap:anywhere}
-.ch-arrow{width:15px;height:15px;stroke:var(--mut2);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;transition:stroke .25s,transform .25s;flex-shrink:0}
-.channel:hover .ch-arrow{stroke:var(--ink);transform:translate(2px,-2px)}
-.contact-hand{
-  margin-top:26px;font-family:var(--f-hand);font-weight:600;font-size:24px;
-  color:var(--ink);transform:rotate(-1.5deg);display:inline-block;position:relative;
-}
-.contact-hand::after{
-  content:"";position:absolute;left:0;right:0;bottom:-2px;height:6px;
-  background:rgba(var(--glow),.30);filter:blur(6px);border-radius:4px;
-}
-.contact-tiny{margin-top:10px;font-size:clamp(14px,0.81vw,15.5px);color:var(--mut2)}
-
-.footer{border-top:1px solid var(--line);padding:34px 0 42px}
-.footer-in{display:flex;flex-wrap:wrap;gap:14px 34px;align-items:center;justify-content:space-between;font-size:clamp(14px,0.81vw,15.5px);color:var(--mut2)}
-.footer nav{display:flex;flex-wrap:wrap;gap:22px}
-.footer a:hover{color:var(--ink)}
-.footer-top{
-  width:40px;height:40px;border-radius:50%;border:1px solid var(--line);
-  display:grid;place-items:center;color:var(--mut);
-  transition:border-color .25s,color .25s,transform .25s;
-}
-.footer-top:hover{border-color:var(--line2);color:var(--ink);transform:translateY(-3px)}
-.footer-top svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-
-/* ==========================================================
-   МЕНЮ И НИЖНЯЯ ПАНЕЛЬ
-   ========================================================== */
-.mobile-menu{
-  position:fixed;inset:0;z-index:95;
-  backdrop-filter:blur(28px) saturate(140%);
-  -webkit-backdrop-filter:blur(28px) saturate(140%);
-  display:flex;flex-direction:column;justify-content:center;gap:6px;
-  padding:90px 34px 40px;
-  opacity:0;pointer-events:none;transition:opacity .3s ease;
-}
-html[data-theme="light"] .mobile-menu{background:rgba(255,255,255,.90)}
-html[data-theme="dark"] .mobile-menu{background:rgba(5,5,5,.90)}
-body.menu-open .mobile-menu{opacity:1;pointer-events:auto}
-.mobile-menu > *{
-  opacity:0;transform:translateY(16px);filter:blur(10px);
-  transition:opacity .4s ease,transform .45s cubic-bezier(.2,.7,.2,1),filter .4s ease;
-}
-body.menu-open .mobile-menu > *{opacity:1;transform:none;filter:blur(0)}
-body.menu-open .mobile-menu > :nth-child(1){transition-delay:.05s}
-body.menu-open .mobile-menu > :nth-child(2){transition-delay:.09s}
-body.menu-open .mobile-menu > :nth-child(3){transition-delay:.13s}
-body.menu-open .mobile-menu > :nth-child(4){transition-delay:.17s}
-body.menu-open .mobile-menu > :nth-child(5){transition-delay:.21s}
-body.menu-open .mobile-menu > :nth-child(6){transition-delay:.25s}
-body.menu-open .mobile-menu > :nth-child(7){transition-delay:.31s}
-body.menu-open .mobile-menu > :nth-child(8){transition-delay:.37s}
-.mobile-menu a.m-link{
-  font-family:var(--f-h);font-size:23px;font-weight:500;letter-spacing:-.02em;
-  padding:12px 0;border-bottom:1px solid var(--line);
-}
-.mobile-menu .m-actions{display:grid;gap:10px;margin-top:26px}
-.mobile-menu .m-tel{margin-top:18px;font-size:16px;color:var(--mut);font-weight:600}
-
-.mbar{
-  position:fixed;left:14px;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:90;
-  display:none;gap:10px;padding:10px;border-radius:100px;
-  background:var(--glass2);border:1px solid var(--glass-brd);
-  backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);
-  box-shadow:var(--glass-shadow);
-}
-.mbar .btn{flex:1;padding:13px 10px;font-size:clamp(14.5px,0.83vw,16px)}
-
-/* появление: фирменный расфокус */
-.rv{opacity:0;transform:translateY(24px);filter:blur(10px);
-  transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1),filter .75s ease}
-.rv.in{opacity:1;transform:none;filter:blur(0)}
-.rv-d1{transition-delay:.09s}.rv-d2{transition-delay:.18s}.rv-d3{transition-delay:.27s}
-
-/* ==========================================================
-   АДАПТИВ
-   ========================================================== */
-@media (max-width:1020px){
-  .nav,.header-tel{display:none}
-  .burger{display:block}
-  .hero{padding-top:140px}
-  .hero-grid{grid-template-columns:1fr;gap:44px}
-  /* на планшетах h1 крупнее, чем ширина колонки — снимаем принудительную перенонепрерывность */
-  h1 em{white-space:normal}
-  h1 em::after{left:-1%;right:-1%}
-  .path,.srv{grid-template-columns:1fr;gap:14px}
-  .compare{grid-template-columns:1fr;gap:14px}
-  .cmp-me{order:-1}
-  .included{grid-template-columns:1fr 1fr}
-  .prices{grid-template-columns:1fr;gap:26px}
-  .price-feat{order:-1}
-  .why{grid-template-columns:1fr}
-  .about{grid-template-columns:1fr}
-  .works{grid-template-columns:1fr;gap:26px;max-width:520px;margin:0 auto}
-  .calc-out{flex-direction:column;align-items:flex-start}
-}
-@media (max-width:1020px) and (pointer:coarse){
-  .mbar{display:flex}
-  .footer{padding-bottom:110px}
-}
-@media (max-width:1280px){
-  h1 em{white-space:normal}
-}
-@media (max-width:640px){
-  body{font-size:16px}
-  .wrap{padding:0 18px}
-  .header{top:calc(10px + env(safe-area-inset-top,0px))}
-  .header-in{width:calc(100% - 20px);height:58px;padding-left:20px}
-  .logo span{display:none}
-  section{scroll-margin-top:90px}
-  .hero{padding-top:118px}
-  .step{grid-template-columns:1fr;gap:10px;padding:26px 0}
-  .step-n{font-size:32px}
-  .faq{padding:2px 22px}
-  .faq-item summary{padding-right:36px;font-size:15.5px}
-  .faq-body{padding-right:8px}
-  .btn{width:100%}
-  .hero-actions .btn{width:100%}
-  .contact-card{border-radius:28px;margin-bottom:76px}
-  .included{grid-template-columns:1fr}
-  .footer-in{flex-direction:column;align-items:flex-start;gap:16px}
-  .calc-btns{width:100%}
-  .calc-btns .btn{width:100%}
-}
-@media (max-width:1020px){
-  .header-right .btn{display:none}   // в бургер-режиме кнопка не нужна — меню и так есть
-}
-@media (max-width:640px){
-  .header-in{gap:8px;padding-right:6px}
-  .header-right{gap:6px}
-}
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
-  .rv{opacity:1;transform:none;filter:none}
-  .mq-track{animation:none}
-}
-</style>
-
+<link rel="stylesheet" href="css/style.css">
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ProfessionalService",
-      "name": "Кирилл Лукьяненко — разработка сайтов",
-      "description": "Фриланс-разработчик из Оренбурга: лендинги, корпоративные сайты, интернет-магазины по техническому заданию. Цена и срок фиксируются до старта, правки бесплатные.",
-      "telephone": "+7 909 707-78-17",
-      "email": "kir.lukianenko@gmail.com",
-      "priceRange": "от 6900 RUR",
-      "areaServed": "RU",
-      "address": { "@type": "PostalAddress", "addressLocality": "Оренбург", "addressCountry": "RU" },
-      "sameAs": [ "https://t.me/KirillLukianenko", "https://wa.me/79097077817" ],
-      "makesOffer": [
-        { "@type": "Offer", "name": "Лендинг под ключ", "price": "6900", "priceCurrency": "RUR", "description": "Одностраничный сайт по ТЗ: структура, адаптив, формы заявок, публикация на домене." },
-        { "@type": "Offer", "name": "Корпоративный сайт", "price": "13900", "priceCurrency": "RUR", "description": "Многостраничный сайт компании с админкой: услуги, портфолио, контакты, SEO-подготовка." },
-        { "@type": "Offer", "name": "Интернет-магазин", "price": "27900", "priceCurrency": "RUR", "description": "Каталог, корзина, приём платежей, админка товаров и заказов, интеграции по ТЗ." }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        { "@type": "Question", "name": "У меня нет технического задания. Это проблема?", "acceptedAnswer": { "@type": "Answer", "text": "Нет. На первом созвоне задам вопросы по делу: кто аудитория, что должен делать сайт, какие блоки и тексты нужны. По итогам соберу структуру и пришлю на согласование — это и станет нашим ТЗ. Отдельной строкой в смете не идёт." } },
-        { "@type": "Question", "name": "Сколько занимает разработка?", "acceptedAnswer": { "@type": "Answer", "text": "Лендинг — 5–10 дней, корпоративный сайт — 2–4 недели, магазин — от месяца. Точную дату называю до старта и фиксирую письменно." } },
-        { "@type": "Question", "name": "Правки действительно бесплатные?", "acceptedAnswer": { "@type": "Answer", "text": "Да, в рамках согласованного ТЗ правки не ограничены по количеству. Платным становится только выход за изначальное задание." } },
-        { "@type": "Question", "name": "Как устроена оплата?", "acceptedAnswer": { "@type": "Answer", "text": "Половина суммы на старте, половина после проверки готового сайта по тестовой ссылке. Перевод на карту. Все условия фиксируются письменно в мессенджере." } },
-        { "@type": "Question", "name": "Домен и хостинг — на ком?", "acceptedAnswer": { "@type": "Answer", "text": "Помогу выбрать и настроить, но оформление на вас: так сайт остаётся вашим. Обычно это 1 500–3 000 ₽ в год суммарно." } },
-        { "@type": "Question", "name": "Почему дешевле, чем в студии?", "acceptedAnswer": { "@type": "Answer", "text": "Нет офиса, менеджеров и отдела продаж: в цене только работа. Качество держится процессом — смета до старта, превью на каждом этапе, бесплатные правки." } },
-        { "@type": "Question", "name": "Работаете с другими городами?", "acceptedAnswer": { "@type": "Answer", "text": "Да, почти все проекты веду удалённо: созвон, переписка в Telegram, превью по ссылке." } }
-      ]
-    }
-  ]
-}
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"Кирилл Лукьяненко — разработка сайтов","description":"Лендинги, корпоративные сайты и интернет-магазины под ключ","telephone":"+79097077817","email":"kir.lukianenko@gmail.com","priceRange":"от 6 999 ₽","areaServed":{"@type":"Country","name":"Россия"},"address":{"@type":"PostalAddress","addressLocality":"Оренбург","addressCountry":"RU"},"openingHours":"Mo-Su 09:00-21:00","sameAs":["https://t.me/KirillLukianenko"],
+"makesOffer":[{"@type":"Offer","name":"Лендинг","price":"6999","priceCurrency":"RUB"},{"@type":"Offer","name":"Корпоративный сайт","price":"14999","priceCurrency":"RUB"},{"@type":"Offer","name":"Интернет-магазин","price":"29999","priceCurrency":"RUB"}]}
 </script>
 </head>
-
 <body>
+<a class="skip" href="#main">Перейти к содержанию</a>
 
-<noscript>
-  <p style="max-width:700px;margin:0 auto;padding:20px 24px;font:15px/1.6 sans-serif">
-    Кирилл Лукьяненко — разработчик сайтов из Оренбурга: лендинги, корпоративные сайты и интернет-магазины
-    по техническому заданию, от 6 900 ₽, правки бесплатно, удалённо по всей России.
-    Связь: Telegram @KirillLukianenko, WhatsApp и телефон +7 909 707-78-17.
-  </p>
-</noscript>
 
-<header class="header" id="header">
-  <div class="header-in">
-    <a href="#top" class="logo"><b>Кирилл Лукьяненко</b> <span>/ сайты</span></a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></symbol>
+</svg>
 
-    <nav class="nav">
-      <a href="#services">Услуги</a>
+<header class="head" id="head">
+  <div class="head-in glass" data-glass>
+    <a class="brand" href="#top" aria-label="Кирилл Лукьяненко, наверх">Кирилл Лукьяненко</a>
+    <nav class="nav" id="nav" aria-label="Основная навигация">
+      <span class="nav-pill" aria-hidden="true"></span>
       <a href="#works">Работы</a>
       <a href="#prices">Цены</a>
+      <a href="#process">Этапы</a>
       <a href="#about">Обо мне</a>
       <a href="#faq">Вопросы</a>
     </nav>
-
-    <div class="header-right">
-      <a class="header-tel" href="tel:+79097077817">+7 909 707-78-17</a>
-      <button class="theme-btn" id="themeBtn" aria-label="Переключить тему">
-        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5.2 5.2l1.7 1.7M17.1 17.1l1.7 1.7M18.8 5.2l-1.7 1.7M6.9 17.1l-1.7 1.7"/></svg>
-        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 14.2A8.6 8.6 0 0 1 9.8 3.6a8.6 8.6 0 1 0 10.6 10.6z"/></svg>
-      </button>
-      <a class="btn btn-solid btn-sm" href="https://t.me/KirillLukianenko" target="_blank" rel="noopener">Обсудить</a>
-      <button class="burger" id="burger" aria-label="Меню" aria-expanded="false"><i></i><i></i></button>
-    </div>
+    <button class="ibtn" id="themeBtn" type="button" aria-label="Сменить тему">
+      <span class="theme-ic" aria-hidden="true"><svg class="sun"><use href="#i-sun"/></svg><svg class="moon"><use href="#i-moon"/></svg></span>
+    </button>
+    <a class="btn btn-main btn-sm head-cta" href="#contact">Написать</a>
+    <button class="ibtn burger" id="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mmenu"><span class="burger-ic" aria-hidden="true"><i></i><i></i></span></button>
   </div>
 </header>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a class="m-link" href="#services">Услуги</a>
-  <a class="m-link" href="#works">Работы</a>
-  <a class="m-link" href="#prices">Цены</a>
-  <a class="m-link" href="#about">Обо мне</a>
-  <a class="m-link" href="#faq">Вопросы</a>
-  <a class="m-tel" href="tel:+79097077817">+7 909 707-78-17</a>
-  <div class="m-actions">
-    <a class="btn btn-solid" href="https://t.me/KirillLukianenko" target="_blank" rel="noopener">Написать в Telegram</a>
-    <a class="btn btn-ghost" href="https://wa.me/79097077817" target="_blank" rel="noopener">Написать в WhatsApp</a>
-    <a class="btn btn-ghost" href="mailto:kir.lukianenko@gmail.com">Почта: kir.lukianenko@gmail.com</a>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <nav aria-label="Меню">
+    <a href="#works">Работы</a>
+    <a href="#prices">Цены</a>
+    <a href="#calc">Калькулятор</a>
+    <a href="#process">Этапы</a>
+    <a href="#about">Обо мне</a>
+    <a href="#faq">Вопросы</a>
+    <a href="#contact">Контакты</a>
+  </nav>
+  <div class="mmenu-foot">
+    <a class="btn btn-main btn-block" href="#contact">Обсудить проект</a>
+    <a class="btn btn-glass glass btn-block" href="tel:+79097077817">+7 909 707-78-17</a>
   </div>
 </div>
 
-<main id="top">
+<main id="main">
 
-<!-- ================= ПЕРВЫЙ ЭКРАН ================= -->
-<section class="hero">
-  <div class="glow g1"></div>
-  <div class="glow g2"></div>
-
+<section class="hero" id="top">
   <div class="wrap">
-    <div class="hero-grid">
-      <div>
-        <span class="hero-badge rv"><span class="dot"></span><span id="slotBadge">Ближайший свободный старт — через несколько дней</span></span>
-        <h1 class="rv">Сайт, который <em>приводит клиентов</em>, а не просто существует</h1>
-        <p class="hero-sub rv rv-d1">
-          Я Кирилл, разработчик из Оренбурга, в деле больше трёх лет.
-          Делаю лендинги, корпоративные сайты и магазины по вашему ТЗ — удалённо по всей России.
-          Стоимость и дату называю до старта и <b>не меняю по ходу</b>. Правки после сдачи бесплатные.
-        </p>
-        <div class="hero-actions rv rv-d2">
-          <a class="btn btn-solid" href="https://t.me/KirillLukianenko" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.04 15.31l-.38 5.35c.54 0 .78-.23 1.06-.5l2.55-2.44 5.28 3.87c.97.53 1.66.25 1.92-.9l3.48-16.3c.31-1.44-.52-2.08-1.47-1.72L1.2 10.13c-1.4.55-1.38 1.33-.24 1.68l5.2 1.62 12.04-7.58c.57-.38 1.09-.17.66.21L9.04 15.31z"/></svg>
-            Обсудить проект
-          </a>
-          <a class="btn btn-ghost" href="#calc">Посчитать смету</a>
+    <h1 class="h1" data-words>Делаю сайты для бизнеса под ключ <span class="dim">быстро, аккуратно и&nbsp;по&nbsp;фиксированной цене</span></h1>
+    <div class="hero-row">
+      <div class="hero-l">
+        <p class="hero-sub rv d2">Лендинги, сайты компаний и <span class="nw">интернет-магазины</span>. Вы общаетесь напрямую со мной. Цену и срок называю до старта и не меняю их по ходу работы.</p>
+        <div class="hero-cta rv d3">
+          <a class="btn btn-main" href="#contact" data-magnet>Обсудить проект</a>
+          <a class="btn btn-glass glass" href="#works" data-glass>Смотреть работы</a>
         </div>
-        <p class="hero-under rv rv-d3">
-          Достаточно пары предложений о задаче — в ответ пришлю вилку цены и срок.
-          Или соберите ориентир сами в калькуляторе ниже — это 20 секунд.
-        </p>
       </div>
-
-      <aside class="glass panel rv rv-d2" aria-label="Пример работы">
-        <div class="panel-top">
-          <span><b>Кейс в прямом эфире</b> — страница, которую вы читаете</span>
-          <span>замер живой</span>
-        </div>
-        <div class="panel-rows">
-          <div class="panel-row"><span class="k">Открылась на вашем устройстве за</span><span class="v" id="mSpeed">…</span></div>
-          <div class="panel-row"><span class="k">Вес кода страницы</span><span class="v" id="mWeight">…</span></div>
-          <div class="panel-row"><span class="k">Адаптив</span><span class="v">телефон · планшет · ПК</span></div>
-          <div class="panel-row"><span class="k">Правки после сдачи</span><span class="v">бесплатно</span></div>
-        </div>
-        <p class="panel-note">
-          Без скриншотов и обещаний: откройте эту страницу с телефона —
-          ровно так же будет вести себя ваш сайт.
-        </p>
-        <a class="btn btn-ghost" href="https://t.me/KirillLukianenko" target="_blank" rel="noopener">Хочу такой же сайт</a>
-      </aside>
-    </div>
-  </div>
-
-  <div class="mq" aria-hidden="true">
-    <div class="mq-track">
-      <ul>
-        <li>Правки бесплатно</li><li>Цена фиксируется до старта</li><li>Исходники и доступы — ваши</li><li>Все условия письменно</li><li>Больше 3 лет в разработке</li><li>Оренбург · удалённо по всей России</li>
-      </ul>
-      <ul>
-        <li>Правки бесплатно</li><li>Цена фиксируется до старта</li><li>Исходники и доступы — ваши</li><li>Все условия письменно</li><li>Больше 3 лет в разработке</li><li>Оренбург · удалённо по всей России</li>
-      </ul>
+      <dl class="facts rv d3">
+        <div><dt>Лендинг</dt><dd>от 6&nbsp;999&nbsp;₽</dd></div>
+        <div><dt>Срок</dt><dd>от 5 дней</dd></div>
+        <div><dt>Оплата</dt><dd>50&nbsp;/&nbsp;50</dd></div>
+      </dl>
     </div>
   </div>
 </section>
 
-<!-- фирменная полоса-водяной знак: отдельный блок, ни на что не налезает -->
-<div class="band-mark" aria-hidden="true"><span>LUKYANENKO</span></div>
-
-<!-- ================= ПУТЬ ================= -->
-<section class="section" id="start" style="padding-top:clamp(40px,6vw,70px)">
+<section class="sec" id="works">
   <div class="wrap">
-    <div class="section-head rv">
-      <h2>Что произойдёт после вашего сообщения</h2>
-      <p>Самое неприятное при заказе сайта — неизвестность. Вот весь путь, без скрытых этапов.</p>
+    <div class="sec-head">
+      <h2 class="h2" data-words>Работы</h2>
+      <p class="lead rv d1">Три демо-проекта для разных ниш. Компании придуманы, а сайты полностью рабочие: откройте любой, полистайте с телефона, попробуйте отправить заявку.</p>
     </div>
-    <div class="path">
-      <div class="glass path-card rv">
-        <div class="path-n">01</div>
-        <h3>Отвечу в течение часа</h3>
-        <p>Прочитаю задачу и задам три-пять уточняющих вопросов. В Telegram или WhatsApp — как вам удобно.</p>
-      </div>
-      <div class="glass path-card rv rv-d1">
-        <div class="path-n">02</div>
-        <h3>В тот же день — цена и срок</h3>
-        <p>Назову сумму и дату сдачи, зафиксирую письменно в переписке. С этого момента цена не меняется.</p>
-      </div>
-      <div class="glass path-card rv rv-d2">
-        <div class="path-n">03</div>
-        <h3>Старт за 1–2 дня</h3>
-        <p>Соберу структуру, покажу первый экран на согласование — и только потом разработаю весь сайт.</p>
-      </div>
+
+    <div class="cases">
+      <a class="case case-big rv" href="works/garazh12.html" target="_blank" rel="noopener">
+        <div class="shot" data-pan>
+          <picture><source media="(max-width:620px)" srcset="img/garazh12-m.webp" width="420" height="4724"><img src="img/garazh12-d.webp" alt="Сайт автосервиса «Гараж 12»" width="960" height="3122" loading="lazy" decoding="async"></picture>
+          <span class="tag glass">Автосервис</span>
+        </div>
+        <div class="case-info">
+          <div><h3>Гараж 12</h3><p>Тёмный сайт с прайсом, гарантией и онлайн-записью на ремонт.</p></div>
+          <span class="case-go" aria-hidden="true"><svg><use href="#i-out"/></svg></span>
+        </div>
+      </a>
+      <a class="case rv d1" href="works/polka.html" target="_blank" rel="noopener">
+        <div class="shot" data-pan>
+          <picture><source media="(max-width:620px)" srcset="img/polka-m.webp" width="420" height="4845"><img src="img/polka-d.webp" alt="Сайт барбершопа «Полка»" width="960" height="3144" loading="lazy" decoding="async"></picture>
+          <span class="tag glass">Барбершоп</span>
+        </div>
+        <div class="case-info">
+          <div><h3>Полка</h3><p>Прайс, мастера и запись на стрижку в тёплой палитре.</p></div>
+          <span class="case-go" aria-hidden="true"><svg><use href="#i-out"/></svg></span>
+        </div>
+      </a>
+      <a class="case rv d2" href="works/dvorik.html" target="_blank" rel="noopener">
+        <div class="shot" data-pan>
+          <picture><source media="(max-width:620px)" srcset="img/dvorik-m.webp" width="420" height="4559"><img src="img/dvorik-d.webp" alt="Сайт ландшафтного бюро «Дворик»" width="960" height="3089" loading="lazy" decoding="async"></picture>
+          <span class="tag glass">Ландшафт</span>
+        </div>
+        <div class="case-info">
+          <div><h3>Дворик</h3><p>Светлый сайт с проектами, этапами работ и заявкой на выезд.</p></div>
+          <span class="case-go" aria-hidden="true"><svg><use href="#i-out"/></svg></span>
+        </div>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ================= УСЛУГИ ================= -->
-<section class="section" id="services" style="padding-top:0">
+<section class="sec" id="prices">
   <div class="wrap">
-    <div class="section-head rv">
-      <h2>Три формата работы</h2>
-      <p>Всё по вашему техническому заданию. Если ТЗ нет — соберу его вместе с вами на первом созвоне, бесплатно.</p>
+    <div class="sec-head">
+      <h2 class="h2" data-words>Цены</h2>
+      <p class="lead rv d1">Это стартовая стоимость. Точную сумму назову после короткого разговора о задаче и закреплю письменно, дальше она не меняется.</p>
     </div>
-    <div class="srv">
-      <article class="glass srv-card rv">
-        <span class="srv-n">01</span>
+
+    <div class="plans">
+      <article class="plan rv">
         <h3>Лендинг</h3>
-        <p>Одна страница под конкретную задачу: продать услугу, собрать заявки, рассказать о продукте.</p>
-        <ul>
-          <li>структура и прототип под вашу задачу</li>
-          <li>адаптив под телефон, планшет, компьютер</li>
-          <li>формы заявок в Telegram или на почту</li>
+        <p class="plan-d">Одна страница под услугу или продукт</p>
+        <p class="price">от 6&nbsp;999&nbsp;₽</p>
+        <p class="term">5–10 дней</p>
+        <ul class="feat">
+          <li>до 8 блоков</li>
+          <li>адаптив под телефон и планшет</li>
+          <li>форма заявки на почту или в Telegram</li>
+          <li>запуск на вашем домене</li>
         </ul>
-        <div class="srv-foot"><span class="srv-price">от 6 900 ₽</span><span class="srv-time">5–10 дней</span></div>
+        <a class="btn btn-glass glass btn-block" data-glass href="#calc" data-type="landing">Рассчитать</a>
       </article>
-      <article class="glass srv-card rv rv-d1">
-        <span class="srv-n">02</span>
-        <h3>Корпоративный сайт</h3>
-        <p>Сайт компании: услуги, портфолио, команда, блог, контакты — с единой системой дизайна.</p>
-        <ul>
-          <li>до 10 страниц и админка для правок</li>
-          <li>базовая SEO-подготовка и скорость</li>
-          <li>карты, формы, интеграции по ТЗ</li>
+      <article class="plan plan-dark rv d1">
+        <h3>Сайт компании</h3>
+        <p class="plan-d">Несколько страниц: услуги, работы, контакты</p>
+        <p class="price">от 14&nbsp;999&nbsp;₽</p>
+        <p class="term">2–4 недели</p>
+        <ul class="feat">
+          <li>до 10 страниц</li>
+          <li>панель для правки текстов и фото</li>
+          <li>базовая настройка под Яндекс</li>
+          <li>карта, формы и нужные интеграции</li>
         </ul>
-        <div class="srv-foot"><span class="srv-price">от 13 900 ₽</span><span class="srv-time">2–4 недели</span></div>
+        <a class="btn btn-main btn-block" href="#calc" data-type="corp">Рассчитать</a>
       </article>
-      <article class="glass srv-card rv rv-d2">
-        <span class="srv-n">03</span>
-        <h3>Магазин и доработка</h3>
-        <p>Каталог с корзиной и оплатой. Или приведу в порядок сайт, который уже существует.</p>
-        <ul>
-          <li>каталог, фильтры, корзина, приём оплаты</li>
-          <li>перенос на новый дизайн без потери позиций</li>
-          <li>ускорение и исправление вёрстки</li>
+      <article class="plan rv d2">
+        <h3>Интернет-магазин</h3>
+        <p class="plan-d">Каталог, корзина и онлайн-оплата</p>
+        <p class="price">от 29&nbsp;999&nbsp;₽</p>
+        <p class="term">от 4 недель</p>
+        <ul class="feat">
+          <li>фильтры и поиск по каталогу</li>
+          <li>корзина и приём платежей</li>
+          <li>управление товарами и заказами</li>
+          <li>связка с CRM, доставкой, 1С</li>
         </ul>
-        <div class="srv-foot"><span class="srv-price">от 27 900 ₽</span><span class="srv-time">срок по ТЗ</span></div>
+        <a class="btn btn-glass glass btn-block" data-glass href="#calc" data-type="shop">Рассчитать</a>
       </article>
+    </div>
+
+    <div class="incl rv">
+      <p><b>В каждый тариф входит:</b> правки до результата, подключение домена и SSL, видеоинструкция по управлению сайтом и 30 дней бесплатной поддержки после запуска.</p>
+      <p>Домен и хостинг оформляются на вас, обычно это 1&nbsp;500–3&nbsp;000&nbsp;₽ в&nbsp;год.</p>
     </div>
   </div>
 </section>
 
-<!-- ================= РАБОТЫ ================= -->
-<section class="section" id="works" style="padding-top:0">
+<section class="sec sec-alt" id="calc">
   <div class="wrap">
-    <div class="section-head rv">
-      <h2>Работы: три характера, одна планка</h2>
-      <p>Каждый проект — со своей стилевой системой: тёмный индастриал, тёплая классика и светлый минимализм. Клик — и демо откроется в новой вкладке.</p>
+    <div class="sec-head">
+      <h2 class="h2" data-words>Калькулятор</h2>
+      <p class="lead rv d1">Выберите тип сайта и дополнения. Получится ориентир по цене, его можно сразу отправить мне.</p>
     </div>
 
-    <div class="works">
-      <a class="work rv" href="works/garazh12.html" target="_blank" rel="noopener">
-        <span class="browser">
-          <span class="work-tag"><i></i>живое демо</span>
-          <span class="b-bar"><i></i><i></i><i></i><em>garazh12 · демо</em></span>
-          <span class="b-body pv-garage"></span>
-        </span>
-        <span class="work-meta">
-          <b>Автосервис «Гараж 12»</b>
-          <span>тёмный индастриал, сигнальный жёлтый: прайс, записи, отзывы, гарантии</span>
-          <em>открыть демо целиком ↗</em>
-        </span>
-      </a>
-
-      <a class="work rv rv-d1" href="works/polka.html" target="_blank" rel="noopener">
-        <span class="browser">
-          <span class="work-tag"><i></i>живое демо</span>
-          <span class="b-bar"><i></i><i></i><i></i><em>polka · демо</em></span>
-          <span class="b-body pv-polka"></span>
-        </span>
-        <span class="work-meta">
-          <b>Барбершоп «Полка»</b>
-          <span>уголь и латунь, антиква: прайс-лист, мастера, сертификаты, запись</span>
-          <em>открыть демо целиком ↗</em>
-        </span>
-      </a>
-
-      <a class="work rv rv-d2" href="works/dvorik.html" target="_blank" rel="noopener">
-        <span class="browser">
-          <span class="work-tag"><i></i>живое демо</span>
-          <span class="b-bar"><i></i><i></i><i></i><em>dvorik · демо</em></span>
-          <span class="b-body pv-dvorik"></span>
-        </span>
-        <span class="work-meta">
-          <b>Ландшафтная мастерская «Дворик»</b>
-          <span>светлый минимализм, шалфей: портфолио, этапы, отзывы, заявка</span>
-          <em>открыть демо целиком ↗</em>
-        </span>
-      </a>
-    </div>
-
-    <p class="works-note rv">
-      <b>Честно о демо:</b> три сайта выше — настоящие страницы, которые я сверстал для портфолио:
-      откройте любую и покрутите с телефона и с компьютера. Компании и цены внутри выдуманные,
-      механика настоящая: вёрстка, адаптив, анимации, формы. Ваш проект будет таким же собранным, только про ваш бизнес.
-    </p>
-  </div>
-</section>
-
-<!-- ================= ПРОЦЕСС ================= -->
-<section class="process-band" id="process">
-  <div class="section" style="padding-top:clamp(64px,9vw,110px);padding-bottom:clamp(64px,9vw,110px)">
-  <div class="wrap">
-    <div class="section-head rv">
-      <h2>Как идёт работа</h2>
-      <p>Пять шагов, на каждом понятно, что происходит и когда будет готово.</p>
-    </div>
-    <div class="steps">
-      <div class="step rv">
-        <div class="step-n">01</div>
-        <div>
-          <h3>Разбор задачи</h3>
-          <p>Созвон или переписка: аудитория, цели, референсы. Если ТЗ нет — соберу структуру вместе с вами и оформлю её в документ.</p>
-          <span class="step-meta">бесплатно · 20–30 минут</span>
-        </div>
-      </div>
-      <div class="step rv">
-        <div class="step-n">02</div>
-        <div>
-          <h3>Смета и срок</h3>
-          <p>Присылаю точную стоимость и дату сдачи, фиксируем в переписке. Дальше сумма не растёт, даже если по ходу всплывут мелкие детали.</p>
-          <span class="step-meta">в течение дня</span>
-        </div>
-      </div>
-      <div class="step rv">
-        <div class="step-n">03</div>
-        <div>
-          <h3>Первый экран</h3>
-          <p>Показываю главный экран и логику страницы, чтобы мы совпали по стилю до того, как сделана вся работа. Утверждаете — иду дальше.</p>
-          <span class="step-meta">предоплата 50%</span>
-        </div>
-      </div>
-      <div class="step rv">
-        <div class="step-n">04</div>
-        <div>
-          <h3>Разработка</h3>
-          <p>Вёрстка, адаптив, формы, анимации там, где они уместны. Каждые два-три дня присылаю ссылку на превью — видите прогресс, а не ждёте в темноте.</p>
-          <span class="step-meta">основной этап</span>
-        </div>
-      </div>
-      <div class="step rv">
-        <div class="step-n">05</div>
-        <div>
-          <h3>Запуск и правки</h3>
-          <p>Переношу на ваш домен, подключаю формы и аналитику, записываю короткую видеоинструкцию. Правлю бесплатно, пока не скажете «готово».</p>
-          <span class="step-meta">остаток после проверки</span>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
-</section>
-
-<!-- ================= ЦЕНЫ + КАЛЬКУЛЯТОР ================= -->
-<section class="section" id="prices">
-  <div class="wrap">
-    <div class="section-head rv">
-      <h2>Стоимость</h2>
-      <p>Итог зависит от объёма ТЗ: экраны, формы, интеграции, контент. Ниже — ориентиры, от которых отталкиваюсь.</p>
-    </div>
-
-    <div class="prices">
-      <div class="glass price rv">
-        <h3>Лендинг</h3>
-        <p class="price-desc">Одна страница под услугу, продукт или событие.</p>
-        <div class="price-sum">
-          <span class="from">стоимость</span>
-          <span class="val">от 6 900<sup>₽</sup></span>
-          <span class="price-per">≈ 38 ₽ в день — если считать первый год жизни сайта</span>
-        </div>
-        <ul>
-          <li><svg viewBox="0 0 24 24"><path d="m4 12.5 5 5L20 6.5"/></svg>до 8 смысловых блоков</li>
-          <li><svg viewBox="0 0 24 24"><path d="m4 12.5 5 5L20 6.5"/></svg>адаптив под все устройства</li>
-          <li><svg viewBox="0 0 24 24"><path d="m4 12.5 5 5L20 6.5"/></svg>форма заявки и аналитика</li>
-          <li><svg viewBox="0 0 24 24"><path d="m4 12.5 5 5L20 6.5"/></svg>публикация на вашем домене</li>
-          <li><svg viewBox="0 0 24 24"><path d="m4 12.5 5 5L20 6.5"/></svg>правки бесплатно</li>
-        </ul>
-        <a class="btn btn-ghost" href="#calc">Собрать смету</a>
-      </div>
-
-      <div class="glass price price-feat rv rv-d1">
-        <span class="price-flag">Выбирают чаще всего</span>
-        <h3>Корпоративный сайт</h3>
-        <p class="price-desc">Несколько страниц, админка, всё под ключ.</p>
-        <div class="price-sum">
-          <span class="from">стоимость</span>
-          <span class="val">от 13 900<sup>₽</sup></span>
-          <span class="price-per">≈ 76 ₽ в день — если считать первый год жизни сайта</span>
-        </div>
-        <ul>
-          <li><svg viewBox="0 0 24 24"><path d="m4 12.5 5 5L20 6.5"/></svg>до 10 страниц</li>
-          <li><svg viewBox="0 0 24 24"><path d="m4 12.5 5 5L20 6.5"/></svg>админка: тексты и фото меняете сами</li>
-          <li><svg viewBox="0 0 24 24"><path d="m4 12.5 5 5L20 6.5"/></svg>базовая SEO-подготовка</li>
-          <li><svg viewBox="0 0 24 24"><path d="m4 12.5 5 5L20 6.5"/></svg>формы, карты, интеграции по ТЗ</li>
-          <li><svg viewBox="0 0 24 24"><path d="m4 12.5 5 5L20 6.5"/></svg>правки бесплатно</li>
-        </ul>
-        <a class="btn btn-solid" href="#calc" style="background:var(--bg);color:var(--ink)">Собрать смету</a>
-      </div>
-
-      <div class="glass price rv rv-d2">
-        <h3>Магазин</h3>
-        <p class="price-desc">Каталог, корзина, оплата, личный кабинет.</p>
-        <div class="price-sum">
-          <span class="from">стоимость</span>
-          <span class="val">от 27 900<sup>₽</sup></span>
-          <span class="price-per">≈ 152 ₽ в день — если считать первый год жизни сайта</span>
-        </div>
-        <ul>
-          <li><svg viewBox="0 0 24 24"><path d="m4 12.5 5 5L20 6.5"/></svg>каталог с фильтрами и поиском</li>
-          <li><svg viewBox="0 0 24 24"><path d="m4 12.5 5 5L20 6.5"/></svg>корзина и приём платежей</li>
-          <li><svg viewBox="0 0 24 24"><path d="m4 12.5 5 5L20 6.5"/></svg>админка для товаров и заказов</li>
-          <li><svg viewBox="0 0 24 24"><path d="m4 12.5 5 5L20 6.5"/></svg>интеграции: CRM, доставка, 1С</li>
-          <li><svg viewBox="0 0 24 24"><path d="m4 12.5 5 5L20 6.5"/></svg>правки бесплатно</li>
-        </ul>
-        <a class="btn btn-ghost" href="#calc">Собрать смету</a>
-      </div>
-    </div>
-
-    <p class="prices-note rv">
-      <b>Предоплата 50%,</b> остаток — после того, как проверите работу на тестовой ссылке.
-      Домен и хостинг оформляются на вас: сайт принадлежит вам полностью, исходники передаю.
-      А если на этапе первого экрана поймём, что не совпадаем по стилю, — <b>верну предоплату целиком</b>, без вопросов и удержаний.
-    </p>
-
-    <div class="included rv rv-d1">
-      <div><b>Подключение домена</b>хостинг, SSL-сертификат и почта на вашем домене</div>
-      <div><b>Видеоинструкция</b>короткая запись: как самому править тексты и фото</div>
-      <div><b>Исходники и доступы</b>код и все аккаунты оформлены на вас с первого дня</div>
-      <div><b>30 дней поддержки</b>бесплатно чиню всё, что всплывёт после запуска</div>
-    </div>
-
-    <!-- калькулятор: клиент сам собирает ориентир и отправляет его одним тапом -->
-    <div class="glass calc rv" id="calc">
-      <h3>Калькулятор ориентира сметы</h3>
-      <p class="calc-lead">Три клика — и вы видите ориентир до разговора со мной.
-        Результат можно отправить в Telegram или WhatsApp одним тапом: приду на диалог уже с пониманием задачи.</p>
-
-      <div class="calc-groups">
+    <div class="calc">
+      <form class="calc-l rv" id="calcForm" onsubmit="return false">
         <fieldset>
           <legend>Тип сайта</legend>
-          <div class="pills" id="calcType">
-            <label class="pill"><input type="radio" name="ctype" value="l" checked><span>Лендинг <small>от 6 900 ₽</small></span></label>
-            <label class="pill"><input type="radio" name="ctype" value="c"><span>Корпоративный <small>от 13 900 ₽</small></span></label>
-            <label class="pill"><input type="radio" name="ctype" value="s"><span>Магазин <small>от 27 900 ₽</small></span></label>
+          <div class="types">
+            <label class="opt"><input type="radio" name="type" value="landing" checked><span class="o-box"><b>Лендинг</b><span>от 6 999 ₽</span></span></label>
+            <label class="opt"><input type="radio" name="type" value="corp"><span class="o-box"><b>Сайт компании</b><span>от 14 999 ₽</span></span></label>
+            <label class="opt"><input type="radio" name="type" value="shop"><span class="o-box"><b>Магазин</b><span>от 29 999 ₽</span></span></label>
           </div>
         </fieldset>
         <fieldset>
-          <legend>Что добавить</legend>
-          <div class="pills" id="calcOpts">
-            <label class="pill"><input type="checkbox" value="4000" data-name="админка"><span>Админка для правок <small>+4 000 ₽</small></span></label>
-            <label class="pill"><input type="checkbox" value="3000" data-name="тексты"><span>Продающие тексты <small>+3 000 ₽</small></span></label>
-            <label class="pill"><input type="checkbox" value="5000" data-name="логотип"><span>Логотип и министиль <small>+5 000 ₽</small></span></label>
-            <label class="pill"><input type="checkbox" value="4000" data-name="интеграции"><span>CRM / оплата / 1С <small>+4 000 ₽</small></span></label>
+          <legend>Дополнительно</legend>
+          <div class="adds">
+            <label class="opt add"><input type="checkbox" name="add" value="admin" data-price="4000" data-name="Панель для правок"><span class="o-box"><span class="chk" aria-hidden="true"></span><span class="add-t"><b>Панель для правок</b><span data-admin-note>меняете тексты и фото сами</span></span><em>+4 000 ₽</em></span></label>
+            <label class="opt add"><input type="checkbox" name="add" value="copy" data-price="3000" data-name="Тексты для сайта"><span class="o-box"><span class="chk" aria-hidden="true"></span><span class="add-t"><b>Тексты для сайта</b><span>напишу тексты всех блоков</span></span><em>+3 000 ₽</em></span></label>
+            <label class="opt add"><input type="checkbox" name="add" value="logo" data-price="5000" data-name="Логотип и фирменные цвета"><span class="o-box"><span class="chk" aria-hidden="true"></span><span class="add-t"><b>Логотип и цвета</b><span>знак, палитра, шрифты</span></span><em>+5 000 ₽</em></span></label>
+            <label class="opt add"><input type="checkbox" name="add" value="int" data-price="4000" data-name="CRM, оплата, 1С"><span class="o-box"><span class="chk" aria-hidden="true"></span><span class="add-t"><b>CRM, оплата, 1С</b><span>заявки и платежи сразу в вашу систему</span></span><em>+4 000 ₽</em></span></label>
           </div>
         </fieldset>
-      </div>
+      </form>
 
-      <div class="calc-out">
-        <div class="calc-sum">
-          <span class="k">Ваш ориентир</span>
-          <span class="v" id="calcSum" aria-live="polite">от 6 900 до 9 700<sup>₽</sup></span>
-          <span class="calc-note">Точную смету пришлю после разбора ТЗ — и она не изменится по ходу работы.</span>
+      <div class="calc-r rv d1" aria-live="polite">
+        <p class="lbl">Ориентир</p>
+        <p class="sum">от <b id="calcSum">6 999</b> ₽</p>
+        <div class="calc-meta">
+          <div><span>Срок</span><b id="calcTerm">5–10 дней</b></div>
+          <div><span>Предоплата</span><b id="calcPre">3 500 ₽</b></div>
         </div>
-        <div class="calc-btns">
-          <a class="btn btn-solid" id="calcWa" href="https://wa.me/79097077817" target="_blank" rel="noopener">Отправить расчёт в WhatsApp</a>
-          <a class="btn btn-ghost" id="calcTg" href="https://t.me/KirillLukianenko" target="_blank" rel="noopener">Обсудить в Telegram</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= СРАВНЕНИЕ ================= -->
-<section class="section" id="compare" style="padding-top:0">
-  <div class="wrap">
-    <div class="section-head rv">
-      <h2>Почему не конструктор и не студия</h2>
-      <p>Честное сравнение: у каждого варианта своё место. Показываю, куда на самом деле уходят деньги и риски.</p>
-    </div>
-    <div class="compare">
-      <div class="glass cmp rv">
-        <span class="tag">дёшево и сердито</span>
-        <h3>Конструктор</h3>
-        <ul>
-          <li class="minus">шаблонный вид, как у тысяч других сайтов</li>
-          <li class="minus">собираете сами или платите мастеру на час</li>
-          <li class="minus">абонентская плата, сайт фактически не ваш</li>
-          <li class="minus">слабая скорость и SEO — заявки теряются</li>
-        </ul>
-      </div>
-      <div class="glass cmp rv rv-d1">
-        <span class="tag">надёжно, но дорого и долго</span>
-        <h3>Студия</h3>
-        <ul>
-          <li class="minus">от 100 000 ₽ и полтора месяца согласований</li>
-          <li class="minus">между вами и кодером — менеджеры и офис</li>
-          <li class="minus">правки после утверждения макета — по прайсу</li>
-          <li class="minus">платная поддержка после сдачи</li>
-        </ul>
-      </div>
-      <div class="glass cmp cmp-me rv rv-d2">
-        <span class="tag">цена фрилансера, процесс студии</span>
-        <h3>Напрямую со мной</h3>
-        <ul>
-          <li class="plus">смета, превью и сроки — письменно до старта</li>
-          <li class="plus">правки бесплатно до результата, который устраивает</li>
-          <li class="plus">домен, код и доступы — ваши с первого дня</li>
-          <li class="plus">стоимость от 6 900 ₽ без наценки за офис</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= ПРИНЦИПЫ ================= -->
-<section class="section" id="why" style="padding-top:0">
-  <div class="wrap">
-    <div class="section-head rv">
-      <h2>Почему со мной спокойно</h2>
-      <p>Четыре правила, на которых держится работа. Без маркетинговых обещаний — только то, что выполняю.</p>
-    </div>
-    <div class="why">
-      <div class="glass why-card rv"><h3>Без посредников</h3><p>Общаетесь напрямую с тем, кто делает сайт. В цене нет наценки за менеджеров и передачу задачи по цепочке.</p></div>
-      <div class="glass why-card rv rv-d1"><h3>Цена не двигается</h3><p>Сумма из сметы не растёт по ходу проекта, даже если всплывают мелкие детали и уточнения.</p></div>
-      <div class="glass why-card rv"><h3>Правки — это норма</h3><p>Поменять заголовок или фотографию — не «новая итерация за деньги». Правлю бесплатно, пока результат не устроит.</p></div>
-      <div class="glass why-card rv rv-d1"><h3>Всё ваше с первого дня</h3><p>Домен, хостинг, исходники и доступы оформлены на вас. Захотите уйти к другому специалисту — код читаемый.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= ОБО МНЕ ================= -->
-<section class="section" id="about" style="padding-top:0">
-  <div class="wrap">
-    <div class="about">
-      <div class="about-text rv">
-        <p>Занимаюсь сайтами больше трёх лет: начинал с вёрстки, дорос до полного цикла —
-        от структуры и дизайна до публикации, форм и аналитики.</p>
-        <p>Работаю один и беру немного проектов одновременно, поэтому отвечаю быстро
-        и не срываю сроки. Мне важно, чтобы сайт решал задачу бизнеса, а не просто
-        красиво лежал в интернете.</p>
-        <p>Живу в Оренбурге, работаю удалённо по всей России. Разница во времени не мешает —
-        подстраиваюсь под ваш график.</p>
-        <div class="about-sign">
-          <span class="hand">Кирилл Лукьяненко</span>
-          <small>разработка и вёрстка сайтов<br>на связи ежедневно с 9:00 до 21:00 (МСК+2)</small>
+        <div class="calc-act">
+          <a class="btn btn-inv btn-block" id="calcMail" href="mailto:kir.lukianenko@gmail.com">Отправить на почту</a>
+          <div class="rel">
+            <span class="copied" id="copied" role="status">Расчёт скопирован, вставьте его в чат</span>
+            <button class="btn btn-line btn-block" type="button" id="calcCopy">Написать в Telegram</button>
+          </div>
         </div>
       </div>
-      <aside class="glass about-card rv rv-d1">
-        <div class="cap">Коротко о формате</div>
-        <div class="row"><span class="k">Опыт</span><span class="v">больше 3 лет</span></div>
-        <div class="row"><span class="k">Формат</span><span class="v">удалённо, вся Россия</span></div>
-        <div class="row"><span class="k">Предоплата</span><span class="v">50 / 50</span></div>
-        <div class="row"><span class="k">Правки</span><span class="v">бесплатно</span></div>
-        <div class="row"><span class="k">Исходники</span><span class="v">передаю полностью</span></div>
-        <div class="row"><span class="k">Связь</span><span class="v">Telegram, WhatsApp, звонок</span></div>
-      </aside>
     </div>
   </div>
 </section>
 
-<!-- ================= FAQ ================= -->
-<section class="section" id="faq" style="padding-top:0">
+<section class="sec" id="process">
   <div class="wrap">
-    <div class="section-head rv">
-      <h2>Вопросы, которые задают чаще всего</h2>
+    <div class="sec-head">
+      <h2 class="h2" data-words>Как проходит работа</h2>
+      <p class="lead rv d1">На каждом этапе понятно, что происходит и когда будет готово.</p>
     </div>
-    <div class="glass faq rv rv-d1">
-      <details class="faq-item">
-        <summary>У меня нет технического задания. Это проблема?</summary>
-        <div class="faq-body"><div class="faq-in">Нет. На первом созвоне задам вопросы по делу: кто аудитория, что должен делать сайт, какие блоки и тексты нужны. По итогам соберу структуру и пришлю на согласование — это и станет нашим ТЗ. <b>Отдельной строкой в смете не идёт.</b></div></div>
-      </details>
-      <details class="faq-item">
-        <summary>Сколько занимает разработка?</summary>
-        <div class="faq-body"><div class="faq-in">Лендинг — 5–10 дней, корпоративный сайт — 2–4 недели, магазин — от месяца. Срок зависит от готовности контента и скорости обратной связи. Точную дату называю до старта и <b>фиксирую письменно</b>.</div></div>
-      </details>
-      <details class="faq-item">
-        <summary>Правки действительно бесплатные? Где подвох?</summary>
-        <div class="faq-body"><div class="faq-in">Подвоха нет: в рамках согласованного ТЗ правки не ограничены по количеству. Платным становится только выход за изначальное задание — новый раздел, личный кабинет, дополнительная интеграция. Такое обсуждаем отдельно и до начала работы.</div></div>
-      </details>
-      <details class="faq-item">
-        <summary>Как устроена оплата?</summary>
-        <div class="faq-body"><div class="faq-in">Половина суммы — на старте, половина после того, как проверите готовый сайт по тестовой ссылке. Перевод на карту. Все условия — цена, срок, объём — <b>фиксирую письменно в мессенджере</b>, чтобы ни у кого не было сюрпризов.</div></div>
-      </details>
-      <details class="faq-item">
-        <summary>Домен и хостинг — на ком?</summary>
-        <div class="faq-body"><div class="faq-in">Помогу выбрать и настроить, но оформление на вас: так сайт остаётся вашим и не зависит от меня. Обычно это 1 500–3 000 ₽ в год суммарно. На время разработки размещаю проект у себя, чтобы вы посмотрели его в работе.</div></div>
-      </details>
-      <details class="faq-item">
-        <summary>Что если сайт понадобится доработать через полгода?</summary>
-        <div class="faq-body"><div class="faq-in">Пишете — дорабатываю. Мелкие консультации по сданному проекту бесплатны. Исходники и доступы у вас, поэтому при желании с сайтом сможет работать другой специалист: код читаемый, без закрытых конструкторов.</div></div>
-      </details>
-      <details class="faq-item">
-        <summary>Почему дешевле, чем в студии? В чём подвох?</summary>
-        <div class="faq-body"><div class="faq-in">Подвоха нет: у меня нет офиса, менеджеров и отдела продаж, поэтому в цене только работа, а не чужая аренда. Качество держится процессом — смета до старта, превью на каждом этапе, бесплатные правки. Ограничение одно: беру немного проектов одновременно, поэтому слоты на месяц вперёд бывают заняты.</div></div>
-      </details>
-      <details class="faq-item">
-        <summary>Работаете с другими городами?</summary>
-        <div class="faq-body"><div class="faq-in">Да, почти все проекты веду удалённо: созвон, переписка в Telegram, превью по ссылке. География заказчика на результат не влияет.</div></div>
-      </details>
+    <ol class="steps">
+      <li class="step rv"><span class="step-n">1</span><h3>Знакомство</h3><p>Вы пишете пару слов о задаче, я задаю несколько вопросов. Если нет технического задания, составим его вместе.</p><span class="step-t">в день обращения</span></li>
+      <li class="step rv d1"><span class="step-n">2</span><h3>Смета и первый экран</h3><p>Называю цену и дату сдачи, фиксируем их в переписке. Вы вносите предоплату 50%, я показываю дизайн первого экрана.</p><span class="step-t">1–3 дня</span></li>
+      <li class="step rv d2"><span class="step-n">3</span><h3>Разработка</h3><p>Верстаю, подключаю формы, проверяю на телефонах и компьютерах. Промежуточные версии присылаю ссылкой.</p><span class="step-t">основная часть срока</span></li>
+      <li class="step rv d3"><span class="step-n">4</span><h3>Запуск</h3><p>Переношу сайт на ваш домен, вношу правки и записываю видео о том, как им управлять. Затем оплачивается вторая половина.</p><span class="step-t">1–2 дня</span></li>
+    </ol>
+
+    <div class="promise glass rv" data-glass>
+      <p class="promise-t">Если на первом экране поймём, что не совпали по стилю, верну предоплату полностью.</p>
+      <a class="btn btn-main" href="#contact">Обсудить проект</a>
     </div>
   </div>
 </section>
 
-<!-- вторая фирменная полоса -->
-<div class="band-mark" aria-hidden="true"><span>ПОГНАЛИ?</span></div>
+<section class="sec sec-alt" id="about">
+  <div class="wrap about">
+    <h2 class="h2" data-words>Обо мне</h2>
+    <div class="about-txt">
+      <p class="big rv">Меня зовут Кирилл, я делаю сайты больше трёх лет. Начинал с вёрстки, сейчас веду проект целиком: структура, дизайн, код и запуск.</p>
+      <p class="rv">Работаю один, поэтому вы всегда говорите с тем, кто делает сайт. Беру немного проектов одновременно, чтобы отвечать быстро и сдавать вовремя.</p>
+      <p class="rv">Код, домен и доступы остаются у вас. Сайт не привязан ни ко мне, ни к конструктору, его сможет поддерживать любой разработчик.</p>
+      <dl class="info rv">
+        <div><dt>Город</dt><dd>Оренбург, работаю по всей России</dd></div>
+        <div><dt>На связи</dt><dd>ежедневно с 9:00 до 21:00 (МСК+2)</dd></div>
+        <div><dt>Телефон</dt><dd><a class="link" href="tel:+79097077817">+7 909 707-78-17</a></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
 
-<!-- ================= КОНТАКТЫ ================= -->
-<section class="section contact" id="contact" style="padding-top:clamp(30px,5vw,60px)">
-  <div class="glow g1"></div>
+<section class="sec" id="faq">
+  <div class="wrap faq">
+    <h2 class="h2" data-words>Вопросы</h2>
+    <div class="qa">
+      <div class="q rv"><button type="button" aria-expanded="false">У меня нет технического задания. Это проблема?<span class="pm" aria-hidden="true"></span></button><div class="a"><div><p>Нет. Я задам вопросы о ваших клиентах и о том, что должен делать сайт, а потом пришлю структуру страниц на согласование. Она и станет заданием. Отдельно это не оплачивается.</p></div></div></div>
+      <div class="q rv"><button type="button" aria-expanded="false">Сколько времени занимает разработка?<span class="pm" aria-hidden="true"></span></button><div class="a"><div><p>Лендинг 5–10 дней, сайт компании 2–4 недели, магазин от 4 недель. Срок зависит от того, как быстро готовы тексты и фото. Точную дату называю до старта.</p></div></div></div>
+      <div class="q rv"><button type="button" aria-expanded="false">Сколько правок можно внести?<span class="pm" aria-hidden="true"></span></button><div class="a"><div><p>В рамках согласованной задачи сколько угодно. Отдельно обсуждаем только новое, чего не было в смете: дополнительный раздел, личный кабинет, ещё одну интеграцию.</p></div></div></div>
+      <div class="q rv"><button type="button" aria-expanded="false">Как устроена оплата?<span class="pm" aria-hidden="true"></span></button><div class="a"><div><p>Половина перед началом работы, вторая после того, как вы проверите готовый сайт по тестовой ссылке. Если на этапе первого экрана стиль не подошёл, предоплату верну целиком.</p></div></div></div>
+      <div class="q rv"><button type="button" aria-expanded="false">Смогу ли я сам менять сайт?<span class="pm" aria-hidden="true"></span></button><div class="a"><div><p>Да. На сайте компании и в магазине есть панель для правки текстов, фото и цен, для лендинга её можно добавить. После запуска запишу видео, где показываю всё по шагам.</p></div></div></div>
+      <div class="q rv"><button type="button" aria-expanded="false">На кого оформляются домен и хостинг?<span class="pm" aria-hidden="true"></span></button><div class="a"><div><p>На вас, так сайт полностью принадлежит вам. Помогу выбрать и всё настрою. Обычно это 1 500–3 000 ₽ в год.</p></div></div></div>
+      <div class="q rv"><button type="button" aria-expanded="false">Можете доработать мой старый сайт?<span class="pm" aria-hidden="true"></span></button><div class="a"><div><p>Да. Могу перенести его на новый дизайн, ускорить или исправить вёрстку, которая ломается на телефонах. Пришлите ссылку, и я скажу, что можно сделать и сколько это будет стоить.</p></div></div></div>
+<div class="q rv"><button type="button" aria-expanded="false">Почему дешевле, чем в студии?<span class="pm" aria-hidden="true"></span></button><div class="a"><div><p>У меня нет офиса, менеджеров и отдела продаж. Вы платите только за работу над сайтом.</p></div></div></div>
+      <div class="q rv"><button type="button" aria-expanded="false">Работаете с другими городами?<span class="pm" aria-hidden="true"></span></button><div class="a"><div><p>Да, почти все проекты веду удалённо: созвон, переписка и ссылки на промежуточные версии. Если Telegram работает с перебоями, звоните или пишите на почту.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-tight" id="contact">
   <div class="wrap">
-    <div class="glass contact-card rv">
-      <h2>Расскажите о задаче — отвечу ценой и сроком</h2>
-      <p class="lead">Хватит пары предложений о том, что вам нужно. Первый разбор задачи бесплатный и ни к чему не обязывает.</p>
-
-      <span class="scarcity" id="scarcity">Беру немного проектов одновременно — чтобы не срывать сроки. Актуальную загрузку смотрите в начале страницы.</span>
-
-      <div class="channels">
-        <a class="channel" href="https://t.me/KirillLukianenko" target="_blank" rel="noopener">
-          <span class="ch-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.04 15.31l-.38 5.35c.54 0 .78-.23 1.06-.5l2.55-2.44 5.28 3.87c.97.53 1.66.25 1.92-.9l3.48-16.3c.31-1.44-.52-2.08-1.47-1.72L1.2 10.13c-1.4.55-1.38 1.33-.24 1.68l5.2 1.62 12.04-7.58c.57-.38 1.09-.17.66.21L9.04 15.31z"/></svg></span>
-          <span class="ch-txt"><span class="k">Telegram — отвечаю быстрее всего</span><span class="v">@KirillLukianenko</span></span>
-          <svg class="ch-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
-        </a>
-        <a class="channel" href="https://wa.me/79097077817" target="_blank" rel="noopener">
-          <span class="ch-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></span>
-          <span class="ch-txt"><span class="k">WhatsApp</span><span class="v">+7 909 707-78-17</span></span>
-          <svg class="ch-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
-        </a>
-        <a class="channel" href="tel:+79097077817">
-          <span class="ch-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.31.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></span>
-          <span class="ch-txt"><span class="k">Позвонить</span><span class="v">+7 909 707-78-17</span></span>
-          <svg class="ch-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
-        </a>
-        <a class="channel" href="mailto:kir.lukianenko@gmail.com?subject=%D0%97%D0%B0%D1%8F%D0%B2%D0%BA%D0%B0%20%D0%BD%D0%B0%20%D1%81%D0%B0%D0%B9%D1%82">
-          <span class="ch-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></span>
-          <span class="ch-txt"><span class="k">Почта — для писем с файлами и ТЗ</span><span class="v">kir.lukianenko@gmail.com</span></span>
-          <svg class="ch-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
-        </a>
+    <div class="contact rv">
+      <div class="contact-l">
+        <h2 class="h2" data-words>Расскажите о задаче</h2>
+        <p class="lead">Отвечу в течение часа в рабочее время и скажу, сколько будет стоить сайт и когда он будет готов.</p>
+        <div class="ch">
+          <a href="tel:+79097077817"><span>Телефон</span><b>+7 909 707-78-17</b></a>
+          <a href="mailto:kir.lukianenko@gmail.com?subject=%D0%A1%D0%B0%D0%B9%D1%82"><span>Почта</span><b>kir.lukianenko@gmail.com</b></a>
+          <a href="https://t.me/KirillLukianenko" target="_blank" rel="noopener"><span>Telegram</span><b>@KirillLukianenko</b></a>
+        </div>
       </div>
 
-      <span class="contact-hand">отвечаю в течение часа, обычно быстрее</span>
-      <p class="contact-tiny">Без менеджеров и скриптов продаж: ответит один человек — тот, кто будет делать сайт.</p>
+      <div class="brief" id="brief">
+        <form id="briefForm" novalidate>
+          <div class="fld"><input id="bName" name="name" autocomplete="name" placeholder=" " required><label for="bName">Имя</label><span class="err">Напишите, как к вам обращаться</span></div>
+          <div class="fld"><input id="bContact" name="contact" autocomplete="tel" placeholder=" " required><label for="bContact">Телефон или почта</label><span class="err">Нужен телефон или почта для ответа</span></div>
+          <div class="fld"><textarea id="bTask" name="task" rows="3" placeholder=" "></textarea><label for="bTask">Какой сайт нужен</label></div>
+          <button class="btn btn-main btn-block" type="submit">Отправить</button>
+        </form>
+        <div class="done" role="status"><b>Почти готово</b><p>Должна открыться ваша почта с готовым письмом, останется нажать «Отправить». Если почта не открылась, скопируйте заявку и отправьте любым удобным способом.</p><div class="done-act"><button class="btn btn-main btn-block" type="button" id="briefCopy">Скопировать заявку</button><a class="btn btn-line btn-block" href="tel:+79097077817">Позвонить</a><button class="btn-txt" type="button" id="briefBack">Изменить заявку</button></div></div>
+      </div>
     </div>
   </div>
 </section>
-
 </main>
 
-<footer class="footer">
-  <div class="wrap footer-in">
-    <span>© <span id="year">2026</span> Кирилл Лукьяненко · работаю как самозанятый, чек выдаю</span>
-    <nav>
-      <a href="#services">Услуги</a>
-      <a href="#works">Работы</a>
-      <a href="#prices">Цены</a>
-      <a href="#about">Обо мне</a>
-      <a href="#faq">Вопросы</a>
-    </nav>
-    <span>Оренбург · удалённо по России</span>
-    <a href="tel:+79097077817">+7 909 707-78-17</a>
-    <a class="footer-top" href="#top" aria-label="Наверх">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-    </a>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-row">
+      <a class="brand" href="#top">Кирилл Лукьяненко</a>
+      <nav aria-label="Навигация в подвале"><a href="#works">Работы</a><a href="#prices">Цены</a><a href="#process">Этапы</a><a href="#faq">Вопросы</a><a href="#contact">Контакты</a></nav>
+    </div>
+    <div class="foot-row foot-sub">
+      <span>© <span id="year">2026</span> Кирилл Лукьяненко, Оренбург</span>
+      <span><a href="tel:+79097077817">+7 909 707-78-17</a> · <a href="mailto:kir.lukianenko@gmail.com">kir.lukianenko@gmail.com</a></span>
+    </div>
+    <p class="legal">Информация на сайте не является публичной офертой. Стоимость и сроки определяются после согласования задачи. Сайт не использует cookie и аналитику и не хранит введённые данные: заявка отправляется письмом из вашей почты. Компании в демо-проектах вымышлены.</p>
   </div>
 </footer>
 
-<div class="mbar">
-  <a class="btn btn-ghost" href="tel:+79097077817">Позвонить</a>
-  <a class="btn btn-solid" href="https://t.me/KirillLukianenko" target="_blank" rel="noopener">Написать</a>
-</div>
+<nav class="dock glass" id="dock" data-glass aria-label="Быстрая связь">
+  <a class="d-call" href="tel:+79097077817">Позвонить</a>
+  <a class="d-main" href="#contact">Написать</a>
+</nav>
 
-<script>
-document.getElementById('year').textContent = new Date().getFullYear();
-
-/* SL: актуальная загрузка. Менять только NEXT_START (дата ближайшего свободного старта).
-   Всё остальное считается само — цифры на странице всегда согласованы. */
-(function(){
-  var NEXT_START = '2026-11-10'; // ← править вручную раз в неделю
-  var MONTHS = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
-  var d = new Date(NEXT_START + 'T00:00:00');
-  var today = new Date(); today.setHours(0,0,0,0);
-  var days = Math.round((d - today) / 86400000);
-  var when;
-  if (days < 0) when = 'старт возможен со следующего дня после обсуждения';
-  else if (days === 0) when = 'могу стартовать завтра';
-  else if (days === 1) when = 'ближайший старт — через день';
-  else if (days <= 7) when = 'ближайший старт — ' + d.getDate() + ' ' + MONTHS[d.getMonth()] + ' (' + days + ' дн.)';
-  else when = 'ближайший свободный старт — ' + d.getDate() + ' ' + MONTHS[d.getMonth()];
-  var badge = document.getElementById('slotBadge');
-  if (badge) badge.textContent = when + ' · Оренбург → вся Россия';
-  var sc = document.getElementById('scarcity');
-  if (sc) sc.textContent = 'Беру немного проектов одновременно — чтобы не срывать сроки. ' + when.charAt(0).toUpperCase() + when.slice(1) + '.';
-})();
-
-/* тема + цвет адресной строки */
-(function(){
-  var btn = document.getElementById('themeBtn');
-  var root = document.documentElement;
-  var meta = document.getElementById('metaTheme');
-  btn.addEventListener('click', function(){
-    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    root.classList.add('theme-anim');
-    root.setAttribute('data-theme', next);
-    if (meta) meta.setAttribute('content', next === 'dark' ? '#050505' : '#ffffff');
-    try { localStorage.setItem('kl-theme', next); } catch(e){}
-    window.setTimeout(function(){ root.classList.remove('theme-anim'); }, 500);
-  });
-})();
-
-/* шапка */
-var header = document.getElementById('header');
-var onScroll = function(){ header.classList.toggle('is-stuck', window.scrollY > 12); };
-onScroll();
-window.addEventListener('scroll', onScroll, {passive:true});
-
-/* меню */
-var burger = document.getElementById('burger');
-burger.addEventListener('click', function(){
-  var open = document.body.classList.toggle('menu-open');
-  burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-  document.body.style.overflow = open ? 'hidden' : '';
-});
-document.querySelectorAll('#mobileMenu a').forEach(function(a){
-  a.addEventListener('click', function(){
-    document.body.classList.remove('menu-open');
-    burger.setAttribute('aria-expanded','false');
-    document.body.style.overflow = '';
-  });
-});
-
-/* появление блоков с расфокусом */
-(function(){
-  var items = document.querySelectorAll('.rv');
-  if (!('IntersectionObserver' in window)) { items.forEach(function(el){ el.classList.add('in'); }); return; }
-  var io = new IntersectionObserver(function(es){
-    es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, {threshold:.12, rootMargin:'0px 0px -50px 0px'});
-  items.forEach(function(el){ io.observe(el); });
-})();
-
-/* плавный FAQ: высота + лёгкий расфокус текста */
-(function(){
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  document.querySelectorAll('.faq-item').forEach(function(d){
-    var sum = d.querySelector('summary');
-    var body = d.querySelector('.faq-body');
-    if (!sum || !body) return;
-    sum.addEventListener('click', function(e){
-      e.preventDefault();
-      if (reduce) { d.open = !d.open; return; }
-      if (d.dataset.anim) return;
-      d.dataset.anim = '1';
-      if (d.open) {
-        body.style.height = body.scrollHeight + 'px';
-        body.style.opacity = '1';
-        body.style.filter = 'blur(0)';
-        requestAnimationFrame(function(){
-          body.style.transition = 'height .36s cubic-bezier(.2,.7,.2,1), opacity .3s ease, filter .3s ease';
-          body.style.height = '0px';
-          body.style.opacity = '0';
-          body.style.filter = 'blur(5px)';
-        });
-        window.setTimeout(function(){ d.open = false; body.style.cssText = ''; delete d.dataset.anim; }, 380);
-      } else {
-        d.open = true;
-        body.style.height = '0px';
-        body.style.opacity = '0';
-        body.style.filter = 'blur(5px)';
-        requestAnimationFrame(function(){
-          body.style.transition = 'height .42s cubic-bezier(.2,.7,.2,1), opacity .38s ease, filter .38s ease';
-          body.style.height = body.scrollHeight + 'px';
-          body.style.opacity = '1';
-          body.style.filter = 'blur(0)';
-        });
-        window.setTimeout(function(){ body.style.cssText = ''; delete d.dataset.anim; }, 460);
-      }
-    });
-  });
-})();
-
-/* CALC: калькулятор ориентира сметы */
-(function(){
-  var BASE = { l:6900, c:13900, s:27900 };
-  var NAMES = { l:'лендинг', c:'корпоративный сайт', s:'интернет-магазин' };
-  var form = document.getElementById('calc');
-  if (!form) return;
-  var out = document.getElementById('calcSum');
-  var wa = document.getElementById('calcWa');
-  var tg = document.getElementById('calcTg');
-  var fmt = function(n){ return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,' '); };
-  var recalc = function(){
-    var type = form.querySelector('input[name="ctype"]:checked').value;
-    var sum = BASE[type];
-    var opts = [];
-    form.querySelectorAll('#calcOpts input:checked').forEach(function(i){
-      sum += +i.value; opts.push(i.dataset.name);
-    });
-    var hi = Math.round(sum * 1.4 / 100) * 100; // честный коридор: до сложной реализации
-    out.innerHTML = 'от ' + fmt(sum) + ' до ' + fmt(hi) + '<sup>₽</sup>';
-    var msg = 'Здравствуйте! Собрал ориентир на вашем сайте: ' + NAMES[type] +
-              (opts.length ? ' + ' + opts.join(', ') : '') +
-              '. Калькулятор показал ' + fmt(sum) + '\u2013' + fmt(hi) + ' \u20BD. Обсудим детали?';
-    var enc = encodeURIComponent(msg);
-    wa.href = 'https://wa.me/79097077817?text=' + enc;
-    if (tg) tg.href = 'https://t.me/KirillLukianenko?text=' + enc;
-  };
-  form.addEventListener('change', recalc);
-  recalc();
-})();
-
-/* живой замер скорости */
-window.addEventListener('load', function(){
-  var ms = document.getElementById('mSpeed');
-  var wt = document.getElementById('mWeight');
-  try {
-    var n = performance.getEntriesByType('navigation')[0];
-    var t = n ? n.domContentLoadedEventEnd : performance.now();
-    ms.textContent = (t/1000).toFixed(2).replace('.', ',') + ' с';
-    var kb = n && n.transferSize ? Math.round(n.transferSize/1024) : 0;
-    wt.textContent = kb ? '≈ ' + kb + ' КБ' : 'меньше 60 КБ';
-  } catch(e) {
-    ms.textContent = 'меньше секунды';
-    wt.textContent = 'меньше 60 КБ';
-  }
-});
-</script>
-
+<script src="js/main.js" defer></script>
 </body>
 </html>

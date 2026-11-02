@@ -1,207 +1,214 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Автосервис «Гараж 12» — живое демо сайта | Кирилл Лукьяненко</title>
-<meta name="robots" content="noindex, nofollow">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23ffb000'/%3E%3Ctext x='32' y='45' font-family='Arial,sans-serif' font-weight='700' font-size='34' fill='%23101010' text-anchor='middle'%3EГ%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Автосервис «Гараж 12» — демо-сайт</title>
+<meta name="description" content="Демонстрационный сайт автосервиса. Компания вымышлена, сайт сделан для портфолио.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0d0d0c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23FFD400'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='700' font-size='30' fill='%23111' text-anchor='middle'%3E12%3C/text%3E%3C/svg%3E">
+<link rel="preload" href="../fonts/oswald-cyr.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-:root{
-  --bg:#0e0e0f; --bg2:#161618; --ink:#f4f4f2; --mut:rgba(244,244,242,.62); --mut2:rgba(244,244,242,.36);
-  --line:rgba(244,244,242,.12); --acc:#ffb000; --acc-d:#101010;
-  --f-h:"Oswald",Impact,sans-serif; --f-b:"Manrope",system-ui,sans-serif;
-}
+@font-face{font-family:Oswald;src:url(../fonts/oswald-cyr.woff2) format("woff2");font-weight:400 700;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Oswald;src:url(../fonts/oswald-lat.woff2) format("woff2");font-weight:400 700;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Onest;src:url(../fonts/onest-cyr.woff2) format("woff2");font-weight:300 800;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Onest;src:url(../fonts/onest-lat.woff2) format("woff2");font-weight:300 800;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+:root{--bg:#0d0d0c;--bg2:#161614;--line:rgba(255,255,255,.1);--ink:#f3f1ea;--mut:#a3a199;--y:#FFD400;--ease:cubic-bezier(.22,1,.36,1);--pad:clamp(18px,5vw,64px)}
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:110px;color-scheme:dark}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 var(--f-b);-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip}
-img,svg{display:block;max-width:100%}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Onest,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
-h1,h2,h3{margin:0;font-family:var(--f-h);font-weight:600;text-transform:uppercase;letter-spacing:.01em;line-height:1.1}
-p{margin:0}
-ul{margin:0;padding:0;list-style:none}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-.demo-bar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;
-  padding:9px 16px;background:#000;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--mut2)}
-.demo-bar b{color:var(--acc);font-weight:600}
-.demo-bar a{color:var(--ink);border-bottom:1px dashed var(--mut2);transition:border-color .2s,color .2s}
-.demo-bar a:hover{color:var(--acc);border-color:var(--acc)}
-.hdr{position:sticky;top:37px;z-index:40;background:rgba(14,14,15,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.hdr-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
-.logo{font-family:var(--f-h);font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;display:flex;align-items:center;gap:10px}
-.logo i{width:12px;height:26px;background:repeating-linear-gradient(135deg,var(--acc) 0 5px,#000 5px 10px);border-radius:2px}
-.hdr nav{display:flex;gap:22px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--mut)}
-.hdr nav a:hover{color:var(--acc)}
-.tel{font-family:var(--f-h);font-size:16px;font-weight:600;letter-spacing:.02em;color:var(--acc)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:4px;padding:14px 26px;font-weight:700;font-size:14px;
-  text-transform:uppercase;letter-spacing:.05em;font-family:var(--f-h);transition:transform .2s,box-shadow .2s,background .2s}
-.btn-acc{background:var(--acc);color:var(--acc-d)}
-.btn-acc:hover{transform:translateY(-2px);box-shadow:0 14px 34px -14px rgba(255,176,0,.55)}
-.btn-out{border:1px solid var(--line);color:var(--ink)}
-.btn-out:hover{border-color:var(--acc);color:var(--acc)}
-.hero{padding:76px 0 66px;position:relative;overflow:hidden;
-  background:radial-gradient(700px 420px at 82% 10%,rgba(255,176,0,.14),transparent 65%),
-             repeating-linear-gradient(135deg,rgba(255,176,0,.05) 0 10px,transparent 10px 26px)}
-.hero h1{font-size:clamp(32px,6vw,62px);max-width:16ch}
-.hero h1 span{color:var(--acc)}
-.hero p{color:var(--mut);margin-top:18px;max-width:52ch;font-size:17px}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
-.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:38px}
-.chip{border:1px solid var(--line);border-radius:4px;padding:9px 16px;font-size:13px;font-weight:600;color:var(--mut);background:rgba(255,255,255,.03)}
-.chip b{color:var(--acc)}
-section{padding:72px 0}
-.sec-t{font-size:clamp(24px,4vw,38px)}
-.sec-sub{color:var(--mut);margin-top:12px;max-width:56ch}
-.grid{display:grid;gap:14px;margin-top:38px}
-.g3{grid-template-columns:repeat(3,1fr)}
-.g2{grid-template-columns:repeat(2,1fr)}
-.card{background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:26px 24px;transition:transform .25s,border-color .25s,box-shadow .25s}
-.card:hover{transform:translateY(-4px);border-color:rgba(255,176,0,.5);box-shadow:0 22px 50px -30px #000}
-.card h3{font-size:18px}
-.card p{color:var(--mut);font-size:14.5px;margin-top:10px}
-.price-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:16px 4px;border-bottom:1px dashed var(--line);font-size:15px}
-.price-row b{font-family:var(--f-h);font-size:17px;color:var(--acc);white-space:nowrap;letter-spacing:.02em}
-.steps{counter-reset:s;margin-top:36px;display:grid;gap:14px;grid-template-columns:repeat(4,1fr)}
-.step{background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:22px}
-.step::before{counter-increment:s;content:"0" counter(s);display:block;font-family:var(--f-h);font-size:30px;color:var(--acc);opacity:.8}
-.step h3{font-size:15.5px;margin-top:12px}
-.step p{color:var(--mut);font-size:13.5px;margin-top:8px}
-.rev{background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:6px;padding:24px}
-.rev p{color:var(--mut);font-size:14.5px;font-style:italic}
-.rev b{display:block;margin-top:14px;font-size:13.5px;color:var(--ink)}
-.rev span{display:block;font-size:12px;color:var(--mut2);margin-top:2px}
-.stars{color:var(--acc);letter-spacing:3px;font-size:14px;margin-bottom:12px}
-.cta{background:linear-gradient(120deg,#1a1408,#0e0e0f 55%),repeating-linear-gradient(135deg,rgba(255,176,0,.07) 0 12px,transparent 12px 30px);
-  border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center}
-.cta h2{font-size:clamp(24px,4.5vw,40px)}
-.cta p{color:var(--mut);margin:14px auto 0;max-width:46ch}
-.cta .btn{margin-top:28px}
-.ftr{border-top:1px solid var(--line);padding:34px 0;font-size:13px;color:var(--mut2);display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
-.rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
-.rv.in{opacity:1;transform:none}
-@media (max-width:900px){.g3,.steps{grid-template-columns:1fr 1fr}.hdr nav{display:none}}
-@media (max-width:600px){.g3,.g2,.steps{grid-template-columns:1fr}.hero{padding:54px 0 46px}section{padding:54px 0}.btn{width:100%}}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
+button,input,select,textarea{font:inherit;color:inherit}
+h1,h2,h3{font-family:Oswald,Impact,sans-serif;text-transform:uppercase;letter-spacing:.01em;line-height:1.02;margin:0;font-weight:600}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--pad)}
+.js .rv{opacity:0;transform:translateY(24px);filter:blur(10px);transition:opacity .8s var(--ease),transform .8s var(--ease),filter .8s var(--ease)}
+.js .rv.in{opacity:1;transform:none;filter:none}
+:focus-visible{outline:2px solid var(--y);outline-offset:3px}
+/* demo bar */
+.demo-bar{position:relative;z-index:60;background:var(--y);color:#111;font-size:13px;font-weight:600;text-align:center;padding:8px 14px;line-height:1.35}
+.demo-bar a{text-decoration:underline;text-underline-offset:3px}
+/* header */
+.head{position:sticky;top:0;z-index:50;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+.head.scrolled{background:rgba(13,13,12,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-color:var(--line)}
+.head .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-family:Oswald,sans-serif;font-weight:700;font-size:20px;text-transform:uppercase}
+.logo i{display:grid;place-items:center;width:36px;height:36px;background:var(--y);color:#111;font-style:normal;border-radius:6px;font-size:16px}
+.nav{display:flex;gap:28px;font-size:14px;color:var(--mut)}
+.nav a{transition:color .25s}.nav a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;border-radius:6px;font-weight:600;font-size:15px;border:0;cursor:pointer;transition:transform .35s var(--ease),background .3s,color .3s,box-shadow .35s;-webkit-tap-highlight-color:transparent}
+.btn-y{background:var(--y);color:#111}
+.btn-o{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}
+@media (hover:hover){.btn-y:hover{transform:translateY(-2px);box-shadow:0 12px 30px -10px rgba(255,212,0,.6)}.btn-o:hover{box-shadow:inset 0 0 0 1px var(--y);color:var(--y)}}
+.btn:active{transform:scale(.97)}
+.burger{display:none;width:44px;height:44px;border:0;background:transparent;cursor:pointer;position:relative}
+.burger span{position:absolute;left:11px;right:11px;height:2px;background:var(--ink);transition:transform .4s var(--ease),opacity .3s}
+.burger span:nth-child(1){top:16px}.burger span:nth-child(2){top:26px}
+.menu-open .burger span:nth-child(1){transform:translateY(5px) rotate(45deg)}
+.menu-open .burger span:nth-child(2){transform:translateY(-5px) rotate(-45deg)}
+.mmenu{position:fixed;inset:0;z-index:40;background:rgba(13,13,12,.96);display:flex;flex-direction:column;justify-content:center;gap:8px;padding:0 var(--pad);opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+.mmenu a{font-family:Oswald,sans-serif;text-transform:uppercase;font-size:36px;padding:6px 0}
+.menu-open .mmenu{opacity:1;visibility:visible}
+.menu-open{overflow:hidden}
+@media (max-width:860px){.nav,.head .btn{display:none}.burger{display:block}}
+/* hero */
+.hero{position:relative;min-height:calc(100svh - 104px);display:flex;align-items:flex-end;padding:120px 0 56px;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;transform:scale(1.06);animation:zoom 14s var(--ease) forwards}
+@keyframes zoom{to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,13,12,.2) 0%,rgba(13,13,12,.55) 55%,var(--bg) 100%)}
+.hero .wrap{position:relative;z-index:1;width:100%}
+.tag{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--y)}
+.tag::before{content:"";width:22px;height:2px;background:var(--y)}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(255,212,0,0)}100%{box-shadow:0 0 0 0 rgba(255,212,0,0)}}
+.hero h1{font-size:clamp(44px,9vw,128px);margin:18px 0 22px;max-width:12ch}
+.hero h1 em{font-style:normal;color:var(--y)}
+.hero p{max-width:52ch;color:#d6d4cc;font-size:clamp(16px,1.6vw,19px);margin:0 0 30px}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:48px}
+.facts div{background:rgba(22,22,20,.85);padding:20px}
+.facts b{display:block;font-family:Oswald,sans-serif;font-size:32px;color:var(--y);line-height:1}
+.facts span{font-size:13px;color:var(--mut)}
+@media (max-width:700px){.facts{grid-template-columns:repeat(2,1fr)}}
+/* sections */
+section{padding:clamp(64px,10vw,120px) 0}
+.sh{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.sh h2{font-size:clamp(34px,5.4vw,68px);max-width:14ch}
+.sh p{color:var(--mut);max-width:40ch;margin:0}
+.price{border-top:1px solid var(--line)}
+.price-row{display:grid;grid-template-columns:1fr auto;gap:8px 24px;align-items:baseline;padding:20px 4px;border-bottom:1px solid var(--line);transition:background .3s,padding .4s var(--ease)}
+@media (hover:hover){.price-row:hover{background:var(--bg2);padding-left:16px;padding-right:16px}}
+.price-row h3{font-size:clamp(20px,2.4vw,28px)}
+.price-row small{grid-column:1;color:var(--mut);font-size:14px}
+.price-row b{grid-row:1/3;grid-column:2;font-family:Oswald,sans-serif;font-size:clamp(20px,2.4vw,28px);color:var(--y);white-space:nowrap;align-self:center}
+.split{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(28px,5vw,72px);align-items:center}
+.split img{border-radius:10px;aspect-ratio:4/3;object-fit:cover;width:100%}
+@media (max-width:860px){.split{grid-template-columns:1fr}}
+.list{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:14px}
+.list li{display:flex;gap:14px;align-items:flex-start;color:#d6d4cc}
+.list li::before{content:"";flex:0 0 22px;height:22px;border-radius:4px;background:var(--y) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111' stroke-width='3'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/14px no-repeat;margin-top:2px}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.review{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:26px;transition:transform .5s var(--ease),border-color .3s}
+@media (hover:hover){.review:hover{transform:translateY(-4px);border-color:rgba(255,212,0,.4)}}
+.review p{margin:14px 0 18px;color:#d6d4cc}
+.review .st{color:var(--y);letter-spacing:3px}
+.review small{color:var(--mut)}
+@media (max-width:860px){.reviews{grid-template-columns:1fr}}
+.book{background:var(--y);color:#111;border-radius:14px;padding:clamp(28px,5vw,64px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px)}
+.book h2{font-size:clamp(34px,5vw,60px)}
+.book p{margin:16px 0 0;max-width:36ch}
+@media (max-width:860px){.book{grid-template-columns:1fr}}
+form{display:grid;gap:12px;position:relative}
+label{font-size:13px;font-weight:600;display:grid;gap:6px}
+input,select{width:100%;min-height:52px;border-radius:6px;border:1.5px solid rgba(0,0,0,.18);background:rgba(255,255,255,.55);padding:0 14px;font-size:16px;transition:border-color .25s,background .25s;-webkit-appearance:none;appearance:none}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:18px;padding-right:40px}
+input:focus,select:focus{outline:0;border-color:#111;background:#fff}
+input.bad{border-color:#c0261a;background:#fff2ef}
+form .btn{background:#111;color:var(--y);min-height:54px}
+@media (hover:hover){form .btn:hover{transform:translateY(-2px);box-shadow:0 12px 24px -12px rgba(0,0,0,.6)}}
+.ok{display:none;padding:22px;border-radius:8px;background:#111;color:var(--ink)}
+.ok b{color:var(--y)}
+form.sent>*:not(.ok){display:none}
+form.sent .ok{display:block;animation:pop .6s var(--ease)}
+@keyframes pop{from{opacity:0;transform:scale(.96)}}
+.note{font-size:12px;opacity:.7}
+footer{padding:48px 0 calc(40px + env(safe-area-inset-bottom));border-top:1px solid var(--line);color:var(--mut);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.back{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:55;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;background:rgba(20,20,18,.7);-webkit-backdrop-filter:blur(16px) saturate(160%);backdrop-filter:blur(16px) saturate(160%);border:1px solid rgba(255,255,255,.16);font-size:13px;font-weight:600;transition:transform .35s var(--ease)}
+@media (hover:hover){.back:hover{transform:translateY(-2px)}}
+footer{padding-bottom:calc(76px + env(safe-area-inset-bottom))!important}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none;filter:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-
-<div class="demo-bar"><b>ДЕМО-САЙТ</b> · компания и цены выдуманы, вёрстка настоящая <a href="../index.html#works">← вернуться в портфолио</a></div>
-
-<header class="hdr">
-  <div class="wrap hdr-in">
-    <a class="logo" href="#top"><i></i>Гараж&nbsp;12</a>
-    <nav>
-      <a href="#services">Услуги</a><a href="#prices">Прайс</a><a href="#how">Как работаем</a><a href="#reviews">Отзывы</a><a href="#contacts">Контакты</a>
-    </nav>
-    <a class="tel" href="tel:+70000000012">+7 (000) 000-00-12</a>
+<div class="demo-bar">Демо-сайт: компания и тексты вымышлены, механика настоящая. <a href="../index.html#works">Вернуться в портфолио</a></div>
+<header class="head" data-head>
+  <div class="wrap">
+    <a class="logo" href="#top"><i>12</i>Гараж 12</a>
+    <nav class="nav" aria-label="Разделы"><a href="#price">Цены</a><a href="#why">Гарантии</a><a href="#reviews">Отзывы</a><a href="#book">Запись</a></nav>
+    <a class="btn btn-y" href="#book">Записаться</a>
+    <button class="burger" data-burger aria-label="Меню" aria-expanded="false"><span></span><span></span></button>
   </div>
 </header>
+<div class="mmenu" data-menu><a href="#price">Цены</a><a href="#why">Гарантии</a><a href="#reviews">Отзывы</a><a href="#book">Запись</a></div>
 
 <main id="top">
-<section class="hero">
+<div class="hero">
+  <img src="img/garazh-hero.webp" alt="Цех автосервиса с автомобилем на подъёмнике" width="1536" height="1024" fetchpriority="high">
   <div class="wrap">
-    <h1 class="rv">Ремонт без <span>«сюрпризов»</span>: назвали цену — значит, столько и заплатите</h1>
-    <p class="rv rv-d1">Слесарка, электрика, подвеска и диагностика. Работаем в открытой зоне — можете смотреть, как крутят ваши гайки. Без предоплаты за запчасти из своего кармана.</p>
-    <div class="hero-actions rv rv-d2">
-      <a class="btn btn-acc" href="#contacts">Записаться на ремонт</a>
-      <a class="btn btn-out" href="#prices">Смотреть прайс</a>
+    <span class="tag rv">Открыто сегодня до 21:00</span>
+    <h1 class="rv">Ремонт без <em>сюрпризов</em> в чеке</h1>
+    <p class="rv">Диагностика за 30 минут, смета до начала работ и гарантия 12 месяцев. Не согласовали — не делаем.</p>
+    <div class="row rv"><a class="btn btn-y" href="#book">Записаться на диагностику</a><a class="btn btn-o" href="#price">Смотреть цены</a></div>
+    <div class="facts rv">
+      <div><b>12 мес</b><span>гарантия на работы</span></div>
+      <div><b>30 мин</b><span>компьютерная диагностика</span></div>
+      <div><b>6</b><span>постов, без очередей</span></div>
+      <div><b>4,9</b><span>средняя оценка клиентов</span></div>
     </div>
-    <div class="chips rv rv-d3">
-      <span class="chip"><b>14 лет</b> на одном месте</span>
-      <span class="chip"><b>2 часа</b> — средняя диагностика</span>
-      <span class="chip"><b>Гарантия 6 мес.</b> на работы</span>
-      <span class="chip">Видеосъёмка <b>до и после</b></span>
+  </div>
+</div>
+
+<section id="price">
+  <div class="wrap">
+    <div class="sh rv"><h2>Цены видно сразу</h2><p>Указана стоимость работ. Запчасти — по чеку поставщика, можно привезти свои.</p></div>
+    <div class="price rv">
+      <div class="price-row"><h3>Компьютерная диагностика</h3><small>все системы, отчёт с фото</small><b>990 ₽</b></div>
+      <div class="price-row"><h3>Замена масла и фильтра</h3><small>15 минут, пока вы пьёте кофе</small><b>от 700 ₽</b></div>
+      <div class="price-row"><h3>Тормозные колодки</h3><small>передняя или задняя ось</small><b>от 1 200 ₽</b></div>
+      <div class="price-row"><h3>Шиномонтаж</h3><small>комплект, балансировка включена</small><b>от 2 400 ₽</b></div>
+      <div class="price-row"><h3>Ремонт подвески</h3><small>после диагностики и согласования</small><b>от 3 500 ₽</b></div>
     </div>
   </div>
 </section>
 
-<section id="services">
-  <div class="wrap">
-    <h2 class="sec-t rv">Что делаем</h2>
-    <p class="sec-sub rv">Восемь направлений — всё, кроме кузовного ремонта. Если задачу решить нельзя, скажем честно и не возьмём денег.</p>
-    <div class="grid g3">
-      <div class="card rv"><h3>Диагностика</h3><p>Компьютерная проверка всех систем + осмотр ходовой. По итогу — письменный список с приоритетами: что срочно, что подождёт.</p></div>
-      <div class="card rv rv-d1"><h3>Подвеска и рулевая</h3><p>Сайлентблоки, амортизаторы, шаровые, рычаги. Развал-схождение после вмешательства — в подарок.</p></div>
-      <div class="card rv rv-d2"><h3>Тормоза</h3><p>Колодки, диски, суппорты, прокачка. Проверка стояночного тормоза бесплатно при любом обращении.</p></div>
-      <div class="card rv"><h3>Электрика</h3><p>Не заводится, мигает, гудит — найдём. Прозвонка проводки, генераторы, стартеры, сигнализации.</p></div>
-      <div class="card rv rv-d1"><h3>Двигатель и трансмиссия</h3><p>Замена ГРМ, прокладок, сцеплений. Капремонт — с фотоотчётом по каждому узлу.</p></div>
-      <div class="card rv rv-d2"><h3>Обслуживание</h3><p>Замена масла, фильтров, ремней, свечей. Ведём историю вашего авто — напомним, когда пора.</p></div>
+<section id="why" style="background:var(--bg2)">
+  <div class="wrap split">
+    <img class="rv" src="img/garazh-detail.webp" alt="Механик затягивает колесо динамометрическим ключом" width="1000" height="666" loading="lazy" decoding="async">
+    <div class="rv">
+      <span class="tag">Правила цеха</span>
+      <h2 style="font-size:clamp(34px,5vw,60px);margin-top:14px">Вы видите всё, за что платите</h2>
+      <ul class="list">
+        <li>Фото и видео каждой снятой детали в мессенджер</li>
+        <li>Смета фиксируется до начала работ</li>
+        <li>Старые запчасти возвращаем в багажник</li>
+        <li>Гарантия 12 месяцев на работы и 6 месяцев на детали</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<section id="prices" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+<section id="reviews">
   <div class="wrap">
-    <h2 class="sec-t rv">Прайс</h2>
-    <p class="sec-sub rv">Цены за работу без запчастей. Запчасти — по чеку поставщика + фиксированные 10% за подбор и доставку. Чек поставщика покажем.</p>
-    <div style="margin-top:30px" class="rv">
-      <div class="price-row"><span>Компьютерная диагностика всех систем</span><b>1 200 ₽</b></div>
-      <div class="price-row"><span>Замена передних колодок (легковые)</span><b>900 ₽</b></div>
-      <div class="price-row"><span>Замена амортизатора (1 шт., стойка)</span><b>1 800 ₽</b></div>
-      <div class="price-row"><span>Замена масла ДВС + фильтр</span><b>800 ₽</b></div>
-      <div class="price-row"><span>Замена ремня ГРМ (простые моторы)</span><b>от 6 500 ₽</b></div>
-      <div class="price-row"><span>Прокачка тормозной системы</span><b>1 000 ₽</b></div>
-      <div class="price-row"><span>Развал-схождение 3D</span><b>1 400 ₽</b></div>
-      <div class="price-row"><span>Поиск неисправности электрики (час)</span><b>1 500 ₽</b></div>
-    </div>
-    <div class="hero-actions rv" style="margin-top:30px"><a class="btn btn-acc" href="#contacts">Узнать цену по своей проблеме</a></div>
-  </div>
-</section>
-
-<section id="how">
-  <div class="wrap">
-    <h2 class="sec-t rv">Как идёт работа</h2>
-    <div class="steps">
-      <div class="step rv"><h3>Заявка</h3><p>Звонок или форма. Сразу называем вилку и созваниваемся для уточнения.</p></div>
-      <div class="step rv rv-d1"><h3>Диагностика</h3><p>Осмотр и проверка. Находим причину, а не только симптом.</p></div>
-      <div class="step rv rv-d2"><h3>Смета</h3><p>Письменный список работ и цен. Ваше «да» — только потом начинаем.</p></div>
-      <div class="step rv rv-d3"><h3>Ремонт и выдача</h3><p>Работаем на подъёмнике при вас. Выдаём акт и гарантию 6 месяцев.</p></div>
+    <div class="sh rv"><h2>Говорят клиенты</h2><p>Отзывы в демо вымышлены, но блок работает как на настоящем сайте.</p></div>
+    <div class="reviews">
+      <article class="review rv"><span class="st">★★★★★</span><p>Назвали цену по телефону — ровно столько и заплатил. Показали старые колодки, объяснили, почему менять.</p><small>Андрей, Kia Rio</small></article>
+      <article class="review rv"><span class="st">★★★★★</span><p>Записалась онлайн на 9 утра, в 9:40 уже уехала. Без навязывания «ещё вот это бы поменять».</p><small>Марина, Hyundai Creta</small></article>
+      <article class="review rv"><span class="st">★★★★★</span><p>Нашли причину стука, которую в двух сервисах не могли найти. Прислали видео с подъёмника.</p><small>Олег, Toyota Camry</small></article>
     </div>
   </div>
 </section>
 
-<section id="reviews" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+<section id="book" style="padding-top:0">
   <div class="wrap">
-    <h2 class="sec-t rv">Отзывы</h2>
-    <div class="grid g3">
-      <div class="rev rv"><div class="stars">★★★★★</div><p>«Приехал с плавающей проверкой check engine. Нашли за два часа, пробили другие три сервиса. Цена как обещали — ни рубля сверху.»</p><b>Артём, Kia Rio</b><span>Яндекс Карты</span></div>
-      <div class="rev rv rv-d1"><div class="stars">★★★★★</div><p>«Порадовало, что показывают старую деталь и объясняют, почему менять. Сын теперь тоже здесь обслуживается.»</p><b>Николай Иванович, Ford Focus</b><span>2ГИС</span></div>
-      <div class="rev rv rv-d2"><div class="stars">★★★★★</div><p>«Делали подвеску перед продажей машины. Сделали за день, скинули видео каждого этапа — было спокойно, даже не ездила смотреть.»</p><b>Марина, VW Polo</b><span>Telegram-чат района</span></div>
+    <div class="book rv">
+      <div><h2>Запишитесь за 30 секунд</h2><p>Перезвоним в течение 10 минут, подтвердим время и назовём ориентир по цене.</p></div>
+      <form data-demo novalidate>
+        <label>Имя<input name="name" required autocomplete="name" placeholder="Как к вам обращаться"></label>
+        <label>Телефон<input name="tel" type="tel" required autocomplete="tel" inputmode="tel" placeholder="+7"></label>
+        <label>Услуга<select name="s"><option>Диагностика</option><option>Замена масла</option><option>Тормоза</option><option>Шиномонтаж</option><option>Другое</option></select></label>
+        <button class="btn" type="submit">Записаться</button>
+        <span class="note">Это демо: данные никуда не отправляются.</span>
+        <div class="ok" role="status"><b>Заявка принята.</b><br>На настоящем сайте она уже пришла бы владельцу в мессенджер или на почту.</div>
+      </form>
     </div>
-  </div>
-</section>
-
-<section class="cta" id="contacts">
-  <div class="wrap">
-    <h2 class="rv">Опишите проблему — ответим ценой и сроком</h2>
-    <p class="rv rv-d1">Перезвоним в течение 15 минут в рабочее время. Диагностика в день обращения, если приедете до 16:00.</p>
-    <div class="rv rv-d2" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px">
-      <a class="btn btn-acc" href="../index.html#contact">Способ связи из портфолио</a>
-      <a class="btn btn-out" href="tel:+70000000012">Позвонить в бокс</a>
-    </div>
-    <p class="rv rv-d3" style="margin-top:20px;font-size:13px;color:var(--mut2)">г. Оренбург, ул. Примерная, 12 &nbsp;·&nbsp; ежедневно 9:00–21:00</p>
   </div>
 </section>
 </main>
 
-<footer class="ftr">
-  <div class="wrap" style="display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between;width:100%">
-    <span>© Автосервис «Гараж 12» — демонстрационный проект</span>
-    <a href="../index.html#works" style="color:var(--acc)">← Все работы Кирилла</a>
-  </div>
-</footer>
-
-<script>
-(function(){
-  var items=document.querySelectorAll('.rv');
-  if(!('IntersectionObserver' in window)){items.forEach(function(el){el.classList.add('in')});return;}
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
-  items.forEach(function(el){io.observe(el)});
-})();
-</script>
+<footer><div class="wrap"><span>© <span data-year>2026</span> «Гараж 12» · демо-проект</span><span>Сайт сделал <a href="../index.html">Кирилл Лукьяненко</a></span></div></footer>
+<a class="back" href="../index.html#works">← В портфолио</a>
+<script src="demo.js" defer></script>
 </body>
 </html>
